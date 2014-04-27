@@ -1,0 +1,9 @@
+{
+  "name": "cwsite",
+  "description": "Cezary Wojcik's Website",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.1.0"
+  }
+}
