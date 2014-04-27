@@ -6,14 +6,24 @@
 
 // ---- [ includes ] -----------------------------------------------------------
 
-var app  = require('express')();
+var express = require('express');
 var jade = require('jade');
+var routes = require('./routes');
+
+// ---- [ setup ] --------------------------------------------------------------
+
+var app = express();
+app.engine('jade', jade.__express);
+app.set('view engine', 'jade');
+app.set('view options', {
+	layout: false
+});
+app.set('views', __dirname + '/views');
+app.use(express.static(__dirname + '/public'));
 
 // ---- [ routing ] ------------------------------------------------------------
 
-app.get('/', function(req, res) {
-	res.send('Test');
-});
+app.get('/', routes.index);
 
 // ---- [ run server ] ---------------------------------------------------------
 
