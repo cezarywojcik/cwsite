@@ -1,0 +1,30 @@
+@mixin box-shadow($top, $left, $blur, $color) {
+  -webkit-box-shadow:$top $left $blur $color;
+  -moz-box-shadow:$top $left $blur $color;
+  box-shadow:$top $left $blur $color;
+}
+
+@mixin placeholder {
+  input:not(#search-input) {
+    &::-webkit-input-placeholder {@content}
+    &:-moz-placeholder {@content}
+    &::-moz-placeholder {@content}
+    &:-ms-input-placeholder {@content}
+  }
+}
+
+@mixin transition($property: all, $duration: 1s, $timing: ease, $delay: 0s) {
+  transition: $property $duration $timing $delay;
+  -webkit-transition: $property $duration $timing $delay;
+  -moz-transition: $property $duration $timing $delay;
+  -ms-transition: $property $duration $timing $delay;
+  -o-transition: $property $duration $timing $delay;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

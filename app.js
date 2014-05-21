@@ -1,32 +1,31 @@
 /**
  * File: app.js
- * Auth: Cezary Wojcik
- * Desc: This is the main file for cezarywojcik.com
+ * Desc: This is the main node app file for cezarywojcik.com
  */
 
-// ---- [ includes ] -----------------------------------------------------------
+// ---- [ includes ] ----------------------------------------------------------
 
-var express = require('express');
-var jade = require('jade');
-var routes = require('./routes');
+var express = require("express");
+var jade = require("jade");
+var routes = require("./routes");
 
-// ---- [ setup ] --------------------------------------------------------------
+// ---- [ setup ] -------------------------------------------------------------
 
 var app = express();
-app.engine('jade', jade.__express);
-app.set('view engine', 'jade');
-app.set('view options', {
-	layout: false
+app.engine("jade", jade.__express);
+app.set("view engine", "jade");
+app.set("view options", {
+  layout: false
 });
-app.set('views', __dirname + '/views');
-app.use(express.static(__dirname + '/public'));
+app.set("views", __dirname + "/views");
+app.use(express.static(__dirname + "/public"));
 
-// ---- [ routing ] ------------------------------------------------------------
+// ---- [ routing ] -----------------------------------------------------------
 
-app.get('/', routes.index);
+app.get("/", routes.home);
 
-// ---- [ run server ] ---------------------------------------------------------
+// ---- [ run server ] --------------------------------------------------------
 
 var server = app.listen(3000, function() {
-	console.log('Listening on port %d', server.address().port);
+  console.log("Listening on port %d", server.address().port);
 });

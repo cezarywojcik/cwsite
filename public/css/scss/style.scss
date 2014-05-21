@@ -1,0 +1,34 @@
+/**
+ * theme.scss contains theme setup
+ */
+@import "theme";
+
+/**
+ * mixins.scss contains sass mixins
+ */
+@import "mixins";
+
+/*
+ * global.scss contains global styling
+ */
+@import "global";
+
+/*
+ * navigation.scss contains styling for the navigation panel
+ */
+@import "navigation";
+
+/*
+ * main.scss contains the main page styling
+ */
+@import "main";
+
+/*
+ * forms.scss contains styling for forms
+ */
+@import "forms";
+
+/*
+ * responsive.scss contains responsive media queries
+ */
+@import "responsive";

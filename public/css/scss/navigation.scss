@@ -1,0 +1,33 @@
+.navigation {
+  background-color: $gray2;
+  border-bottom: 5px solid $gray4;
+  border-top: 5px solid $gray4;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline;
+  }
+
+  a {
+    color: $darkRed;
+    font-size: 24px;
+    line-height: 55px;
+    margin-bottom: 5px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+
+    @include transition(all, 0.1s);
+
+    &:hover {
+      background-color: $gray1;
+      border-bottom: thick solid $darkRed;
+      border-top: thick solid $darkRed;
+      padding-bottom: 18px;
+      padding-top: 17px;
+
+      @include box-shadow(0, 1px, 10px, rgba(0, 0, 0, 0.5));
+    }
+  }
+}

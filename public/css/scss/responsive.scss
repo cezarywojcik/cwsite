@@ -1,0 +1,95 @@
+/* ---- [ desktop ]  ------------------------------------------------------- */
+
+@media all and (min-width: 1000px) {
+  body {
+   background: url('../img/back.png') repeat fixed;
+  }
+  .page {
+    margin: 15px auto 15px auto;
+    width: 900px;
+    @include box-shadow(0, 1px, 15px, rgba(0, 0, 0, 0.5));
+  }
+
+  .leftbox {
+    float: left;
+    width: 402px;
+  }
+
+  .rightbox {
+    float: right;
+    width: 402px;
+  }
+}
+
+
+/* ---- [ tablet ] --------------------------------------------------------- */
+
+@media all and (max-width: 999px) {
+  .title {
+    font-size: 120px;
+  }
+
+  .mosaic-block {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .bar2 .mosaic-overlay {
+    height: 140px;
+    bottom: 0px;
+  }
+}
+
+/* ---- [ mobile ] --------------------------------------------------------- */
+
+@media all and (max-width: 600px) {
+  .title {
+    font-size: 60px;
+  }
+
+  .content {
+    padding: 0;
+    padding-top: 25px;
+  }
+
+  .footer {
+    padding-top: 10px;
+    font-size: 8px;
+  }
+
+  .left-footer, .right-footer{
+    float: none;
+    position: relative;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-top: -25px;
+  }
+
+  .navigation {
+    a {
+      font-size: 20px;
+      line-height: 50px;
+      padding: 5px;
+
+      &:hover {
+        padding-bottom: 17px;
+      }
+    }
+  }
+
+  .article-title {
+    font-size: 32px;
+  }
+
+  input[type=text] {
+    width: 100%;
+  }
+
+  input[type=submit] {
+    width: 100%;
+  }
+}
