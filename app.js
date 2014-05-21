@@ -23,6 +23,10 @@ app.use(express.static(__dirname + "/public"));
 // ---- [ routing ] -----------------------------------------------------------
 
 app.get("/", routes.home);
+app.get("/blog", routes.blog);
+app.get("/about", routes.about);
+app.get("/contact", routes.contact);
+app.get("/gallery", routes.gallery);
 
 // ---- [ run server ] --------------------------------------------------------
 
