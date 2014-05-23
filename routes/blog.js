@@ -7,17 +7,19 @@ var jade = require("jade");
 var db = require("../db.js");
 
 exports.blog = function(req, res) {
-  var article = {
-    title: "My Blog Posts",
-    timecreated: "",
-    content: jade.renderFile("views/partials/blog.jade", {
-      posts: []
-    }),
-    nav: ""
-  };
+  db.getBlogPostList(function(data) {
+    var article = {
+      title: "My Blog Posts",
+      timecreated: "",
+      content: jade.renderFile("views/partials/blog.jade", {
+        posts: data
+      }),
+      nav: ""
+    };
 
-  res.render("generic", {
-    title: "Blog",
-    article: article
+    res.render("generic", {
+      title: "Blog",
+      article: article
+    });
   });
 };

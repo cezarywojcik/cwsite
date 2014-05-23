@@ -24,6 +24,7 @@ app.use(express.static(__dirname + "/public"));
 
 app.get("/", routes.home);
 app.get("/blog", routes.blog);
+app.get("/blog/:id", routes.blogpost);
 app.get("/about", routes.about);
 app.get("/contact", routes.contact);
 app.get("/gallery", routes.gallery);

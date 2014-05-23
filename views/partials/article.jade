@@ -6,5 +6,7 @@ div.article
     div.article-time.
       #{article.timecreated}
     | !{article.content}
+    if article.blogpost
+      div.article-footer ~
    | !{article.nav}
   div.clearfix
