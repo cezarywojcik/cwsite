@@ -3,16 +3,13 @@
  * Desc: the / route
  */
 
-exports.home = function(req, res) {
-  var article = {
-    title: "Test Title",
-    timecreated: "May 20, 2014",
-    content: "test content",
-    nav: "nav stuff"
-  };
+var db = require("../db.js");
 
-  res.render("home", {
-    title: "Home",
-    article: article
+exports.home = function(req, res) {
+  db.getBlogPostPreview(function(data) {
+    res.render("home", {
+      title: "Home",
+      article: data
+    });
   });
 };

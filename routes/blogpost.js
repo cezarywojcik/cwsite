@@ -1,6 +1,6 @@
 /**
  * File: blogpost.js
- * Desc: the /blod/:id route
+ * Desc: the /blog/:id route
  */
 
 var jade = require("jade");
