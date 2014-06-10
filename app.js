@@ -24,11 +24,12 @@ app.use(express.static(__dirname + "/public"));
 
 app.get("/", routes.home);
 app.get("/blog", routes.bloglist);
-app.get("/:year/:month/:day/:title", routes.blogpost);
 app.get("/about", routes.about);
-app.get("/contact", routes.contact);
+app.get("/contact", routes.contact.get);
+app.post("/contact", routes.contact.post);
 app.get("/gallery", routes.gallery);
 app.get("/rss", routes.rss);
+app.get("/:year/:month/:day/:title", routes.blogpost);
 app.get("/:year/:month?/:day?", routes.bloglist);
 app.get('/*', routes.error);
 
