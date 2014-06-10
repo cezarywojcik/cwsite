@@ -23,11 +23,13 @@ app.use(express.static(__dirname + "/public"));
 // ---- [ routing ] -----------------------------------------------------------
 
 app.get("/", routes.home);
-app.get("/blog", routes.blog);
+app.get("/blog", routes.bloglist);
 app.get("/:year/:month/:day/:title", routes.blogpost);
 app.get("/about", routes.about);
 app.get("/contact", routes.contact);
 app.get("/gallery", routes.gallery);
+app.get("/rss", routes.rss);
+app.get("/:year/:month?/:day?", routes.bloglist);
 app.get('/*', routes.error);
 
 // ---- [ run server ] --------------------------------------------------------
