@@ -26,6 +26,7 @@ app.use(bodyParser());
 
 app.get("/", routes.home);
 app.get("/blog", routes.bloglist);
+app.get("/blog/:id", routes.legacyblogpost);
 app.get("/about", routes.about);
 app.route("/contact")
   .get(routes.contact.get)

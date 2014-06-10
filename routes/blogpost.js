@@ -1,6 +1,6 @@
 /**
  * File: blogpost.js
- * Desc: the /blog/:id route
+ * Desc: the /:year/:month/:day/:title route
  */
 
 var jade = require("jade");

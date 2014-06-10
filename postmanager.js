@@ -88,7 +88,32 @@ exports.getPost = function(year, month, day, title) {
     return post;
   } catch (err) {
     console.log(err);
-    return temp;
+    return exports.errorPost;
+  }
+};
+
+exports.getPostURLById = function(id) {
+  try {
+    // get all posts
+    var postFilenames = fs.readdirSync("./posts/");
+    postFilenames.sort();
+
+    // get specific post name
+    var filename = postFilenames[id - 1];
+
+    // get post information
+    var postArr = filename.split("-");
+    var year = postArr[0];
+    var month = postArr[1];
+    var day = postArr[2];
+    var title = postArr.slice(3).join("-");
+    title = title.substring(0, title.length - 3);
+
+    // return url
+    return "/" + [year, month, day, title].join("/");
+  } catch (err) {
+    console.log(err);
+    return "/blog/notfound";
   }
 };
 
@@ -109,6 +134,7 @@ exports.getPostList = function(year, month, day, limit) {
   var postFilenames = fs.readdirSync("./posts/").filter(function(post) {
     return post.indexOf(filePattern) === 0;
   });
+  postFilenames.sort();
 
   // load post data
   var posts = [];
@@ -125,7 +151,6 @@ exports.getPostList = function(year, month, day, limit) {
         urlTitle.substring(0, urlTitle.length - 3);
       posts.push(post);
     }
-    posts.sort();
     if (limit && posts.length > limit) {
       posts = posts.splice(0, limit);
     }
