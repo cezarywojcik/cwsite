@@ -6,6 +6,7 @@
 // ---- [ includes ] ----------------------------------------------------------
 
 var express = require("express");
+var bodyParser = require("body-parser");
 var jade = require("jade");
 var routes = require("./routes");
 
@@ -19,14 +20,16 @@ app.set("view options", {
 });
 app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser());
 
 // ---- [ routing ] -----------------------------------------------------------
 
 app.get("/", routes.home);
 app.get("/blog", routes.bloglist);
 app.get("/about", routes.about);
-app.get("/contact", routes.contact.get);
-app.post("/contact", routes.contact.post);
+app.route("/contact")
+  .get(routes.contact.get)
+  .post(routes.contact.post);
 app.get("/gallery", routes.gallery);
 app.get("/rss", routes.rss);
 app.get("/:year/:month/:day/:title", routes.blogpost);
@@ -36,5 +39,5 @@ app.get('/*', routes.error);
 // ---- [ run server ] --------------------------------------------------------
 
 var server = app.listen(3000, function() {
-  console.log("Listening on port %d", server.address().port);
+  console.log("CezaryWojcik.com started on port %d", server.address().port);
 });

@@ -10,19 +10,20 @@ block content
       if errors
         for error in errors
           p.error #{error}
-      form(method="POST")
+      form(method="POST", enctype="application/x-www-form-urlencoded")
         | Your Name:
         br
-        input(type="text", name="name")
+        input(type="text", name="name", value=name)
         br
         | Your Email:
         br
-        input(type="text", name="email")
+        input(type="text", name="email", value=email)
         br
         | Your Message
         br
         div
           textarea(name="message", cols="30", rows="10")
+            | #{message}
         input(type="submit", value="Send")
     div.clearfix
 

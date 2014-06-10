@@ -14,6 +14,8 @@ exports.contact.get = function(req, res) {
 exports.contact.post = function(req, res) {
   var mail = require("nodemailer").mail;
   var to = require("../settings.js").authorEmail;
+  var validator = require("validator");
+
   var name, email, message;
   var fail = false;
   var errors = [];
@@ -24,8 +26,9 @@ exports.contact.post = function(req, res) {
     fail = true;
   }
 
-  if (!req.param("email") || req.param("email").length === 0) {
-    errors.push("The email field cannot be empty!");
+  if (!req.param("email") || req.param("email").length === 0 ||
+    !validator.isEmail(req.param("email"))) {
+    errors.push("Please enter a valid email!");
     fail = true;
   }
 
@@ -66,7 +69,10 @@ exports.contact.post = function(req, res) {
     });
   } else {
     res.render("contact", {
-      errors: errors
+      errors: errors,
+      name: req.param("name"),
+      email: req.param("email"),
+      message: req.param("message")
     });
   }
 };
