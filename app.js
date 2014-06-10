@@ -28,6 +28,7 @@ app.get("/:year/:month/:day/:title", routes.blogpost);
 app.get("/about", routes.about);
 app.get("/contact", routes.contact);
 app.get("/gallery", routes.gallery);
+app.get('/*', routes.error);
 
 // ---- [ run server ] --------------------------------------------------------
 
