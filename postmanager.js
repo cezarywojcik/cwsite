@@ -121,7 +121,7 @@ exports.getPostList = function(year, month, day, limit) {
       var postArr = postFilenames[i].split("-");
       post.date = getFormattedDate(postArr[0], postArr[1], postArr[2]);
       var urlTitle = postArr.slice(3).join("-");
-      post.url = postArr.slice(0, 3).join("/") + "/" +
+      post.url = "/" + postArr.slice(0, 3).join("/") + "/" +
         urlTitle.substring(0, urlTitle.length - 3);
       posts.push(post);
     }
