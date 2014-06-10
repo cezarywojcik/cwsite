@@ -19,8 +19,6 @@ exports.contact.post = function(req, res) {
   var errors = [];
   var article = {};
 
-  console.log(req.param("name"));
-
   if (!req.param("name") || req.param("name").length === 0) {
     errors.push("The name field cannot be empty!");
     fail = true;
