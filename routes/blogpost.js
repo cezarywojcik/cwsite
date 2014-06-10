@@ -4,14 +4,16 @@
  */
 
 var jade = require("jade");
-var db = require("../db.js");
+var pm = require("../postmanager.js");
 
 exports.blogpost = function(req, res) {
-  var id = req.param("id");
-  db.getBlogPost(id, function(data) {
-    res.render("generic", {
-      title: data.title,
-      article: data
-    });
+  var year = req.param("year");
+  var month = req.param("month");
+  var day = req.param("day");
+  var title = req.param("title");
+  var post = pm.getPost(year, month, day, title);
+  res.render(post.layout, {
+    title: post.title,
+    article: post
   });
 };

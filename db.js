@@ -1,5 +1,5 @@
 /**
- * File: gallery.js
+ * File: db.js
  * Desc: this file interacts with the database
  */
 
