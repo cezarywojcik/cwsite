@@ -1,7 +1,7 @@
 div.gallery-item(style="background-image: url(" + item.image + ")")
   div.blurred-back(style="background-image: url(" + item.image + ")")
   div.faded-back
-  a(href=item.url).gallery-content
+  a(href=item.url, target="_blank").gallery-content
     h1 #{item.name}
     div.gallery-description
       | #{item.description}
