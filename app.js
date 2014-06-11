@@ -9,6 +9,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var jade = require("jade");
 var routes = require("./routes");
+var settings = require("./settings.js");
 
 // ---- [ setup ] -------------------------------------------------------------
 
@@ -39,6 +40,6 @@ app.get('/*', routes.error);
 
 // ---- [ run server ] --------------------------------------------------------
 
-var server = app.listen(3000, function() {
-  console.log("CezaryWojcik.com started on port %d", server.address().port);
+var server = app.listen(settings.port, function() {
+  console.log("CezaryWojcik.com started on port %d.", server.address().port);
 });

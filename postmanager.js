@@ -30,7 +30,15 @@ function getFormattedDate(y, m, d) {
   return month + " " + d + ", " + y;
 }
 
+function ensureCacheExists() {
+  if (!fs.existsSync("./cache/")) {
+    fs.mkdirSync("./cache/");
+  }
+}
+
 function getCachedPost(filename) {
+  ensureCacheExists();
+
   var rawPost = fs.readFileSync("./cache/" + filename + ".html", "utf8");
   var post = yaml.parse(rawPost.split("---")[1]);
   post.content = rawPost.split("---")[2];
@@ -38,6 +46,8 @@ function getCachedPost(filename) {
 }
 
 function saveCache(filename, post) {
+  ensureCacheExists();
+
   var path = "./cache/" + filename + ".html";
   var content = post.content;
   delete post.content;
@@ -113,32 +123,41 @@ exports.getPostURLById = function(id) {
     return "/" + [year, month, day, title].join("/");
   } catch (err) {
     console.log(err);
-    return "/blog/notfound";
+    return "/notfound";
   }
 };
 
 exports.getPostList = function(year, month, day, limit) {
-  // get filter
-  var filePattern = "";
-  if (year) {
-    filePattern += year;
-    if (month) {
-      filePattern += "-" + month;
-      if (day) {
-        filePattern += "-" + day;
+  try {
+    // get filter
+    var filePattern = "";
+    if (year) {
+      if (isNaN(year) || Number(year) < 2000) {
+        throw "not a valid year";
+      }
+      filePattern += year;
+      if (month) {
+        if (isNaN(month) || Number(month) <= 0 || Number(month) > 12) {
+          throw "not a valid month";
+        }
+        filePattern += "-" + month;
+        if (day) {
+          if (isNaN(day) || Number(day) <= 0 || Number(day) > 31) {
+            throw "not a valid day";
+          }
+          filePattern += "-" + day;
+        }
       }
     }
-  }
 
-  // get all posts that fit the filter
-  var postFilenames = fs.readdirSync("./posts/").filter(function(post) {
-    return post.indexOf(filePattern) === 0;
-  });
-  postFilenames.sort();
+    // get all posts that fit the filter
+    var postFilenames = fs.readdirSync("./posts/").filter(function(post) {
+      return post.indexOf(filePattern) === 0;
+    });
+    postFilenames.sort();
 
-  // load post data
-  var posts = [];
-  try {
+    // load post data
+    var posts = [];
     for (var i in postFilenames) {
       var rawPost = fs.readFileSync("./posts/" +
         postFilenames[i], "utf8");

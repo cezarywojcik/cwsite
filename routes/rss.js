@@ -17,7 +17,7 @@ exports.rss = function(req, res) {
     language: "en-US"
   });
 
-  var posts = pm.getPostList();
+  var posts = pm.getPostList(null, null, null, 30);
   for (var i in posts) {
     var post = posts[i];
     feed.item({
