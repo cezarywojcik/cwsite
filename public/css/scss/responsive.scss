@@ -23,6 +23,11 @@
   .leftbox, .rightbox {
     padding-right: 5px;
   }
+
+  .gallery-item {
+    margin: 10px;
+    width: 388px;
+  }
 }
 
 
@@ -42,6 +47,10 @@
   .bar2 .mosaic-overlay {
     height: 140px;
     bottom: 0px;
+  }
+
+  .gallery-item {
+    width: 100%;
   }
 }
 
@@ -95,5 +104,19 @@
 
   input[type=submit] {
     width: 100%;
+  }
+
+  .gallery-list {
+    .gallery-item {
+      width: 100%;
+
+      .gallery-content {
+        height: 35px;
+
+        h1 {
+          font-size: 24px;
+        }
+      }
+    }
   }
 }

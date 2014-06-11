@@ -28,3 +28,11 @@
     clear: both;
   }
 }
+
+@mixin blur($amt) {
+  -webkit-filter: blur($amt);
+  -moz-filter: blur($amt);
+  -o-filter: blur($amt);
+  -ms-filter: blur($amt);
+  filter: blur($amt);
+}

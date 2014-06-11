@@ -1,12 +1,18 @@
 # CezaryWojcik.com
 
-This is a new version of my website that is built using Node.js.
+This is a new (in construction) version of my website that is built using Node.js.
 It incorporates a Jekyll-like static markdown blog engine that caches the HTML result.
 It also produces an RSS feed based on the posts at `/rss`.
 
 ## Setup
 
-First, in the terminal:
+First, install dependencies:
+
+```
+npm install
+```
+
+Next, copy the example settings file:
 
 ```
 cp settings.example.js settings.js

@@ -1,0 +1,113 @@
+.gallery-list {
+  text-align: center;
+
+  .gallery-item {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+
+    @include box-shadow(0, 0, 5px, $gray5);
+
+    .blurred-back {
+      border: 5px solid $gray5;
+      border-radius: 5px;
+      height: 240px;
+      background-size: cover;
+      background-position: center;
+      margin: {
+        left: -5px;
+        right: -5px;
+        top: 0px;
+        bottom: 0px;
+      };
+      opacity: 0;
+      z-index: 1999;
+
+      @include transition(all, 0.25s);
+      @include blur(5px);
+    }
+
+    .faded-back {
+      height: 250px;
+      background-color: $gray5;
+      border-radius: 5px;
+      opacity: 0.0;
+      position: absolute;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      @include transition(all, 0.25s);
+    }
+
+    .gallery-content {
+      border-radius: 5px;
+      height: 60px;
+      padding-bottom: 500;
+      opacity: 1.0;
+      overflow: hidden;
+      text-align: center;
+      z-index: 1000;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      @include transition(all, 0.25s);
+
+      h1 {
+        background-color: rgba($gray5, 0.5);
+        color: #fff;
+        font-family: $headerFont;
+        font-size: 40px;;
+        margin: 0;
+        text-shadow: 1px 1px 3px #000;
+      }
+
+      .gallery-description {
+        color: #fff;
+        display: none;
+        opacity: 0;
+        padding: {
+          left: 10px;
+          right: 10px;
+        };
+        text-align: left;
+
+        @include transition(all, 0.25s);
+      }
+    }
+
+    &:hover {
+      .blurred-back {
+        opacity: 1;
+      }
+
+      .faded-back {
+        opacity: 0.6;
+      }
+
+      .gallery-content {
+        height: 244px;
+        opacity: 1.0;
+
+        h1 {
+          background-color: rgba(#fff, 0);
+          border-radius: 5px;
+          color: #fff;
+        }
+
+        .gallery-description {
+          display: block;
+          opacity: 1.0;
+        }
+      }
+    }
+  }
+}

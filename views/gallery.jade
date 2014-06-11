@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div.article
+    div.article-title.
+      Apps
+    hr
+    div.article-content
+      div.gallery-list
+        for item in apps
+          include partials/galleryitem
+
+  div.article
+    div.article-title.
+      Open Source Projects
+    hr
+    div.article-content
+      div.gallery-list
+        for item in projects
+          include partials/galleryitem
+
