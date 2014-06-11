@@ -19,10 +19,46 @@
   padding-bottom: 7px;
   padding-left: 10px;
   position: absolute;
-}
 
-.left-footer img {
-  margin-right: 10px;
+  .image {
+    margin-right: 10px;
+    background-size: contain;
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+  }
+
+  .rss {
+    background-image: url("/img/rss.png");
+
+    &:hover {
+      background-image: url("/img/rsso.png");
+    }
+  }
+
+  .twitter {
+    background-image: url("/img/twitter.png");
+
+    &:hover {
+      background-image: url("/img/twittero.png");
+    }
+  }
+
+  .github {
+    background-image: url("/img/github.png");
+
+    &:hover {
+      background-image: url("/img/githubo.png");
+    }
+  }
+
+  .linkedin {
+    background-image: url("/img/linkedin.png");
+
+    &:hover {
+      background-image: url("/img/linkedino.png");
+    }
+  }
 }
 
 .right-footer {
