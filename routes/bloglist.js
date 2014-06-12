@@ -4,7 +4,7 @@
  */
 
 var jade = require("jade");
-var pm = require("../postmanager.js");
+var pm = require(__dirname + "/../postmanager.js");
 
 exports.bloglist = function(req, res) {
   var posts = pm.getPostList(req.param("year"), req.param("month"),
@@ -22,7 +22,7 @@ exports.bloglist = function(req, res) {
     article = {
       title: "My Blog Posts",
       timecreated: "",
-      content: jade.renderFile("views/partials/blog.jade", {
+      content: jade.renderFile(__dirname + "/../views/partials/blog.jade", {
         posts: posts
         }),
       nav: ""

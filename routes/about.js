@@ -9,7 +9,7 @@ exports.about = function(req, res) {
   var article = {
     title: "About Me",
     timecreated: "",
-    content: jade.renderFile("views/partials/about.jade"),
+    content: jade.renderFile(__dirname + "/../views/partials/about.jade"),
     nav: ""
   };
 

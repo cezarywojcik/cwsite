@@ -12,9 +12,10 @@ exports.gallery = function(req, res) {
   var projects = [];
 
   try {
-    var appFiles = fs.readdirSync("./gallery/apps");
+    var path = __dirname + "/../gallery/apps/";
+    var appFiles = fs.readdirSync(path);
     for (var i in appFiles) {
-      var appFileContents = String(fs.readFileSync("./gallery/apps/" +
+      var appFileContents = String(fs.readFileSync(path +
         appFiles[i]));
       apps.push(yaml.parse(appFileContents));
     }
@@ -24,9 +25,10 @@ exports.gallery = function(req, res) {
   }
 
   try {
-    var projectFiles = fs.readdirSync("./gallery/projects");
+    path = __dirname + "/../gallery/projects/";
+    var projectFiles = fs.readdirSync(path);
     for (var j in projectFiles) {
-      var projectFileContents = String(fs.readFileSync("./gallery/projects/" +
+      var projectFileContents = String(fs.readFileSync(path +
         projectFiles[j]));
       projects.push(yaml.parse(projectFileContents));
     }

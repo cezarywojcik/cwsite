@@ -9,6 +9,11 @@ var md = require("markdown").markdown;
 var yaml = require("yamljs");
 var cheerio = require("cheerio");
 
+// ---- [ paths ] -------------------------------------------------------------
+
+var postsPath = __dirname + "/posts/";
+var cachePath = __dirname + "/cache/";
+
 // ---- [ helper functions ] --------------------------------------------------
 
 function clone(obj) {
@@ -31,15 +36,16 @@ function getFormattedDate(y, m, d) {
 }
 
 function ensureCacheExists() {
-  if (!fs.existsSync("./cache/")) {
-    fs.mkdirSync("./cache/");
+  if (!fs.existsSync(cachePath)) {
+    fs.mkdirSync(cachePath);
   }
 }
 
 function getCachedPost(filename) {
   ensureCacheExists();
 
-  var rawPost = fs.readFileSync("./cache/" + filename + ".html", "utf8");
+  var rawPost = fs.readFileSync(cachePath + filename + ".html",
+    "utf8");
   var post = yaml.parse(rawPost.split("---")[1]);
   post.content = rawPost.split("---")[2];
   return post;
@@ -48,16 +54,17 @@ function getCachedPost(filename) {
 function saveCache(filename, post) {
   ensureCacheExists();
 
-  var path = "./cache/" + filename + ".html";
+  var path = cachePath + filename + ".html";
   var content = post.content;
   delete post.content;
   var cache = "---\n" + yaml.stringify(post) + "---\n";
   cache += content;
-  fs.writeFileSync("./cache/" + filename + ".html", cache);
+  fs.writeFileSync(cachePath + filename + ".html", cache);
 }
 
 function getMarkdownPost(year, month, day, filename) {
-  var rawPost = fs.readFileSync("./posts/" + filename + ".md", "utf8");
+  var rawPost = fs.readFileSync(postsPath + filename + ".md", 
+    "utf8");
   var post = yaml.parse(rawPost.split("---")[1]);
   var content = md.toHTML(rawPost.split("---")[2]);
   $ = cheerio.load(content.replace(/\&quot;/g, "\""));
@@ -83,8 +90,8 @@ exports.errorPost = {
 exports.getPost = function(year, month, day, title) {
   try {
     var filename = [year, month, day, title].join("-");
-    var cachedFilename = "./cache/" + filename + ".html";
-    var mdFilename = "./posts/" + filename + ".md";
+    var cachedFilename = cachePath + filename + ".html";
+    var mdFilename = postsPath + filename + ".md";
     var post;
     if (fs.existsSync(cachedFilename) &&
       fs.statSync(cachedFilename).mtime > fs.statSync(mdFilename).mtime) {
@@ -105,7 +112,7 @@ exports.getPost = function(year, month, day, title) {
 exports.getPostURLById = function(id) {
   try {
     // get all posts
-    var postFilenames = fs.readdirSync("./posts/");
+    var postFilenames = fs.readdirSync(postsPath);
     postFilenames.sort();
 
     // get specific post name
@@ -151,7 +158,8 @@ exports.getPostList = function(year, month, day, limit) {
     }
 
     // get all posts that fit the filter
-    var postFilenames = fs.readdirSync("./posts/").filter(function(post) {
+    var postFilenames = fs.readdirSync(postsPath)
+      .filter(function(post) {
       return post.indexOf(filePattern) === 0;
     });
     postFilenames.sort();
@@ -159,7 +167,7 @@ exports.getPostList = function(year, month, day, limit) {
     // load post data
     var posts = [];
     for (var i in postFilenames) {
-      var rawPost = fs.readFileSync("./posts/" +
+      var rawPost = fs.readFileSync(postsPath +
         postFilenames[i], "utf8");
       var post = yaml.parse(rawPost.split("---")[1]);
       post.excerpt = md.toHTML(post.excerpt);
