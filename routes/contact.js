@@ -8,7 +8,9 @@ var jade = require("jade");
 exports.contact = {};
 
 exports.contact.get = function(req, res) {
-  res.render("contact", {});
+  res.render("contact", {
+    title: "Contact Me"
+  }); 
 };
 
 exports.contact.post = function(req, res) {
