@@ -162,7 +162,7 @@ exports.getPostList = function(year, month, day, limit) {
       .filter(function(post) {
       return post.indexOf(filePattern) === 0;
     });
-    postFilenames.sort();
+    postFilenames.sort().reverse();
 
     // load post data
     var posts = [];
