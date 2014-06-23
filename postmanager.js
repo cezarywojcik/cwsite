@@ -63,7 +63,7 @@ function saveCache(filename, post) {
 }
 
 function getMarkdownPost(year, month, day, filename) {
-  var rawPost = fs.readFileSync(postsPath + filename + ".md", 
+  var rawPost = fs.readFileSync(postsPath + filename + ".md",
     "utf8");
   var post = yaml.parse(rawPost.split("---")[1]);
   var content = md.toHTML(rawPost.split("---")[2]);
@@ -167,10 +167,11 @@ exports.getPostList = function(year, month, day, limit) {
     // load post data
     var posts = [];
     for (var i in postFilenames) {
+      console.log(postFilenames[i]);
       var rawPost = fs.readFileSync(postsPath +
         postFilenames[i], "utf8");
       var post = yaml.parse(rawPost.split("---")[1]);
-      post.excerpt = md.toHTML(post.excerpt);
+      console.log(post);
       var postArr = postFilenames[i].split("-");
       post.date = getFormattedDate(postArr[0], postArr[1], postArr[2]);
       var urlTitle = postArr.slice(3).join("-");
