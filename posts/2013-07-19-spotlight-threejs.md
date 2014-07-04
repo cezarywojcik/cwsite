@@ -72,7 +72,7 @@ Assuming we've [downloaded Three.js](https://raw.github.com/mrdoob/three.js/mast
 And now, we have the following result:
 
 <center><div id="three"></div></center>
-<script src="https://raw.github.com/mrdoob/three.js/master/build/three.min.js"></script>
+<script src="http://threejs.org/build/three.min.js"></script>
 <script>
 var el = document.getElementById("three");
 var width = 250;
