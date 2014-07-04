@@ -20,49 +20,45 @@
   padding-left: 10px;
   position: absolute;
 
-  // preloading
-  background: url("/img/rsso.png") no-repeat -9999px -9999px,
-    url("/img/twittero.png") no-repeat -9999px -9999px,
-    url("/img/githubo.png") no-repeat -9999px -9999px,
-    url("/img/linkedino.png") no-repeat -9999px -9999px;
-
   .image {
     margin-right: 10px;
-    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: inline-block;
     height: 32px;
     width: 32px;
   }
 
   .rss {
-    background-image: url("/img/rss.png");
+    background-image: url("/img/rsssprite.png");
 
     &:hover {
-      background-image: url("/img/rsso.png");
+      background-position: right;
     }
   }
 
   .twitter {
-    background-image: url("/img/twitter.png");
+    background-image: url("/img/twittersprite.png");
 
     &:hover {
-      background-image: url("/img/twittero.png");
+      background-position: right;
     }
   }
 
   .github {
-    background-image: url("/img/github.png");
+    background-image: url("/img/githubsprite.png");
 
     &:hover {
-      background-image: url("/img/githubo.png");
+    background-position: right;
     }
   }
 
   .linkedin {
-    background-image: url("/img/linkedin.png");
+    background-image: url("/img/linkedinsprite.png");
 
     &:hover {
-      background-image: url("/img/linkedino.png");
+      background-position: right;
     }
   }
 }
