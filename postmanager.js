@@ -8,6 +8,8 @@ var hl = require("highlight.js");
 var md = require("markdown").markdown;
 var yaml = require("yamljs");
 var cheerio = require("cheerio");
+var logger = require("./logger.js");
+var entities = require('entities');
 
 // ---- [ paths ] -------------------------------------------------------------
 
@@ -32,7 +34,7 @@ function clone(obj) {
 function getFormattedDate(y, m, d) {
   var month = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"][m - 1];
-  return month + " " + d + ", " + y;
+  return month + " " + Number(d) + ", " + Number(y);
 }
 
 function ensureCacheExists() {
@@ -67,13 +69,13 @@ function getMarkdownPost(year, month, day, filename) {
     "utf8");
   var post = yaml.parse(rawPost.split("---")[1]);
   var content = md.toHTML(rawPost.split("---")[2]);
-  $ = cheerio.load(content.replace(/\&quot;/g, "\""));
+  $ = cheerio.load(entities.decodeHTML(content));
   $("pre code").each(function(i, e) {
     $(this).html(hl.highlightAuto(
-      $(this).html().replace(/\&quot;/g, "\"")).value);
+      entities.decodeHTML($(this).html())).value);
     $(this).addClass("hljs");
   });
-  post.content = $.html();
+  post.content = entities.decodeHTML($.html());
   saveCache(filename, clone(post));
   return post;
 }
@@ -104,7 +106,7 @@ exports.getPost = function(year, month, day, title) {
     post.timecreated = getFormattedDate(year, month, day);
     return post;
   } catch (err) {
-    console.log(err);
+    logger.log("error getting post", "postmanager.js", "getPost", err);
     return exports.errorPost;
   }
 };
@@ -129,7 +131,8 @@ exports.getPostURLById = function(id) {
     // return url
     return "/" + [year, month, day, title].join("/");
   } catch (err) {
-    console.log(err);
+    logger.log("error getting post url by id", "postmanager.js",
+      "getPostURLById", err);
     return "/notfound";
   }
 };
@@ -140,7 +143,7 @@ exports.getPostList = function(year, month, day, limit) {
     var filePattern = "";
     if (year) {
       if (isNaN(year) || Number(year) < 2000) {
-        throw "not a valid year";
+        throw "not a valid year: " + year;
       }
       filePattern += year;
       if (month) {
@@ -163,6 +166,9 @@ exports.getPostList = function(year, month, day, limit) {
       return post.indexOf(filePattern) === 0;
     });
     postFilenames.sort().reverse();
+    postFilenames = postFilenames.filter(function(o) {
+      return o !== ".DS_Store";
+    });
 
     // load post data
     var posts = [];
@@ -183,7 +189,8 @@ exports.getPostList = function(year, month, day, limit) {
     }
     return posts;
   } catch (err) {
-    console.log(err);
+    logger.log("error getting post list", "postmanager.js",
+      "getPostList", err);
     return [];
   }
 };
