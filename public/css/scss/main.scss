@@ -20,6 +20,12 @@
   padding-left: 10px;
   position: absolute;
 
+  // preloading
+  background: url("/img/rsso.png") no-repeat -9999px -9999px,
+    url("/img/twittero.png") no-repeat -9999px -9999px,
+    url("/img/githubo.png") no-repeat -9999px -9999px,
+    url("/img/linkedino.png") no-repeat -9999px -9999px;
+
   .image {
     margin-right: 10px;
     background-size: contain;
