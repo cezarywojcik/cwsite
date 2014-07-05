@@ -75,7 +75,7 @@ function getMarkdownPost(year, month, day, filename) {
       entities.decodeHTML($(this).html())).value);
     $(this).addClass("hljs");
   });
-  post.content = entities.decodeHTML($.html());
+  post.content = $.html().replace(/\&quot;/gm, "\"");
   saveCache(filename, clone(post));
   return post;
 }
