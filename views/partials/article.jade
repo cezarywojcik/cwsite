@@ -8,4 +8,11 @@ div.article
     | !{article.content}
     if article.blogpost
       div.article-footer ~
+if article.blogpost
+  div.article
+    div#disqus_thread(style="padding: 10px 10px 0 10px;")
+  script(type="text/javascript")
+    | var disqus_shortname="cezarywojcikcom";(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src="//"+disqus_shortname+".disqus.com/embed.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)})();
+  noscript
+    | Please enable JavaScript to view the comments powered by Disqus.
   div.clearfix
