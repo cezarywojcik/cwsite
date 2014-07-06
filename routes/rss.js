@@ -23,7 +23,7 @@ exports.rss = function(req, res) {
     feed.item({
       title: post.title,
       description: post.excerpt,
-      url: "http://" + req.headers.host +  "/" + post.url,
+      url: "http://" + req.headers.host + post.url,
       author: "Cezary Wojcik",
       date: post.date
     });
