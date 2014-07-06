@@ -12,7 +12,7 @@ exports.rss = function(req, res) {
     author: "Cezary Wojcik",
     description: "The Official Blog of Cezary Wojcik",
     feed_url: "http://" + req.headers.host + "/rss",
-    site_url: "http:/" + req.headers.host + "/blog",
+    site_url: "http://" + req.headers.host + "/blog",
     copyright: "Copyright Cezary Wojcik 2014",
     language: "en-US"
   });
