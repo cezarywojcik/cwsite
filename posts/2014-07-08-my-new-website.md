@@ -22,4 +22,4 @@ I now also have a list of the three most recent blog posts on the front page as 
 
 There are other smaller and far more subtle changes and improvements as well, some of which are more convenience measures for myself. Setting things up with my own VPS from scratch has been far more rewarding than using a limited shared host. It is nice to have full control of my server.
 
-This implementation is not quite yet complete - there are still some things that I want to get taken care of before I call everything good and done, but most of these are mainly busy work. I'm mainly just []happy that I don't have to use PHP](http://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/) anymore.
+This implementation is not quite yet complete - there are still some things that I want to get taken care of before I call everything good and done, but most of these are mainly busy work. I'm mainly just [happy that I don't have to use PHP](http://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/) anymore.
