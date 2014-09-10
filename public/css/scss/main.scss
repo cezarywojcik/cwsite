@@ -189,3 +189,23 @@
     font-weight: normal;
   }
 }
+
+h1, h2, h3, h4, h5, h6 {
+  .anchor {
+    color: #000;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &:hover {
+    .header-link {
+      &:before {
+        content: "\2014";
+        padding-right: 4px;
+        width: 10px;
+      }
+    }
+  }
+}
