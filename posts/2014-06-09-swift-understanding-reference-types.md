@@ -17,7 +17,7 @@ Strong references are the default reference type when a property is declared in 
 Now, for some history. Before ARC, Objective-C required manual reference counting. For those not lucky enough to have experienced this, here's an example:
 
     // create (and retain) a new view controller
-    UIViewController *viewController = [[UIViewController] alloc] init];
+    UIViewController *viewController = [[UIViewController alloc] init];
     // release the view controller
     [viewController release];
 
