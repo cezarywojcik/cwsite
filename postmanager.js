@@ -7,11 +7,10 @@ var fs = require("fs");
 var hl = require("highlight.js");
 var marked = require("marked");
 var yaml = require("yamljs");
-var cheerio = require("cheerio");
 var logger = require("./logger.js");
 var entities = require('entities');
 
-// ---- [ setup ] -------------------------------------------------------------
+// ---- [ marked setup ] ------------------------------------------------------
 
 var renderer = new marked.Renderer();
 renderer.heading = function(text, level) {
@@ -92,8 +91,7 @@ function getMarkdownPost(year, month, day, filename) {
     "utf8");
   var post = yaml.parse(rawPost.split("---")[1]);
   var content = marked(rawPost.split("---")[2]);
-  $ = cheerio.load(content);
-  post.content = $.html().replace(/\&quot;/gm, "\"");
+  post.content = content;
   saveCache(filename, clone(post));
   return post;
 }

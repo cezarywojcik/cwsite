@@ -126,7 +126,7 @@ Adding the `inout` modifier, however, added some new errors to my code:
 
 The first thing I noticed was that I wasn't using the explicit '&' when calling the functions. I hoped that changing `swiftSorter.bubbleSort($0)` to `swiftSorter.bubbleSort(&$0)` would do the trick, but I was mistaken. All this did was change the error message `'[Int]' is not a subtype of 'inout [T]'` to `'[Int]' is not a subtype of '@lvalue [T]'`. 
 
-Next, I tried getting rid of he `$0` shorthand and being more explicit:
+Next, I tried getting rid of the `$0` shorthand and being more explicit:
 
 ```swift
 self.testSorts(swiftSort: {(arr: [Int]) -> () in swiftSorter.bubbleSort(&arr)},
