@@ -22,11 +22,15 @@ After first reopening the project in Xcode, as expected, I saw a bunch of errors
 
 The first issue I decided to address is the new `Array` syntax. As Xcode tells me, `Array types are now written with the brackets around the element type`. This means changing this:
 
-    var sortLog : String[] = []
+```swift
+var sortLog : String[] = []
+```
 
 to this:
 
-    var sortLog : [String] = []
+```swift
+var sortLog : [String] = []
+```
 
 It was pretty easy to find and fix the other instances of this change.
 
@@ -34,11 +38,15 @@ This change was introduced in [Xcode 6 beta 3](https://developer.apple.com/swift
 
 Another bit of array fun is regarding the `+=` operator. I had the following line of code originally:
 
-    self.sortLog += "\(getSortName()) for \(self.to) random integers:"
+```swift
+self.sortLog += "\(getSortName()) for \(self.to) random integers:"
+```
 
 Due to possible ambiguity with working with `Any` or `AnyObject` types, the `+=` operator was changed to only concatenate arrays. To append an element, the two options now are using the `.append` function or putting the right hand side in an array:
 
-    self.sortLog += ["\(getSortName()) for \(self.to) random integers:"]
+```swift
+self.sortLog += ["\(getSortName()) for \(self.to) random integers:"]
+```
 
 Though this syntax works, I think that I'm going to stick with `.append` because it is more clear.
 
@@ -49,9 +57,11 @@ in the Apple Developer forums, this issue was first introduced in beta 5.
 
 To solve the issue, I had to add the following code to all of my `UIViewController` subclasses:
 
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+```swift
+required init(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+}
+```
 
 In one case, I had already implemented the initializer, but I didn't have the required keyword there, so I only needed to add that.
 
@@ -65,7 +75,9 @@ I also had to remove the implicit unwrapping operator, `!`, from `NSCoder` in th
 
 The other optional issue that I still had was regarding `@IBOutlet` properties. Previously, the following was valid:
 
-    @IBOutlet var testSortButton : UIBarButtonItem
+```swift
+@IBOutlet var testSortButton : UIBarButtonItem
+```
 
 The `@IBOutlet` modifier would let the compiler know that this is basically a `weak` reference without needing to specify it as such. However, now, Xcode was angry at me and said "'IBOutlet' property has non-optional type 'UIBarButtonItem'." It looks like outlets properties were made optional in beta 4, and that makes plenty of sense, since the outlets can possibly be `nil`.
 
@@ -73,12 +85,16 @@ The `@IBOutlet` modifier would let the compiler know that this is basically a `w
 
 Some other properties were changed to be optionals as well. For instance, the well-known `self.navigationController` is now understandably optional. Also, the following:
 
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
-	    
+```swift
+override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
+```
+
 is now:
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-		    
+```swift
+override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+```
+
 All of the optionals were removed in this case.
 
 ## .. to ..<
@@ -96,7 +112,9 @@ Personally, I kind of liked the simplicity of `..` and `...`. The `..<` makes mo
 This is a weird-looking error. Fortunately, a little bit of searching helped me figure out what the issue was. Originally, "immutable" arrays in Swift worked very strangely, because the members of the "immutable" array were still mutable. In the beta 3 update, Apple completely revised the semantics of arrays so that immutable arrays were fully immutable. This means that in order to modify the array that is passed in, we now have to specify that we can modify it using the `inout`
 keyword:
 
-    static func quickSort<T : Comparable>(inout arr : [T], left: Int, right: Int)
+```swift
+static func quickSort<T : Comparable>(inout arr : [T], left: Int, right: Int)
+```
 
 This is because arrays are implemented as `struct`s in Swift, and `struct`s are passed by value, not by reference as classes are. An interesting side effect (and obvious callback to C) of this is that when the arrays are passed into the function, we have to use an explicit '&':
 
@@ -110,14 +128,18 @@ The first thing I noticed was that I wasn't using the explicit '&' when calling 
 
 Next, I tried getting rid of he `$0` shorthand and being more explicit:
 
-    self.testSorts(swiftSort: {(arr: [Int]) -> () in swiftSorter.bubbleSort(&arr)},
-         objcSort: {objcSorter.bubbleSort($0)})
+```swift
+self.testSorts(swiftSort: {(arr: [Int]) -> () in swiftSorter.bubbleSort(&arr)},
+     objcSort: {objcSorter.bubbleSort($0)})
+```
 
 As a result, I got a shiny new error message: `'[Int]' is not convertible to '@lvalue inout $T5'`. What I was missing was the `var` keyword. Parameters are immutable by default (as if declared by `let`), so in order to be able to pass the variable in by reference in order to modify it, it has to be modifiable to begin with. So what I needed was:
 
-    self.testSorts(swiftSort: {(var arr: [Int]) -> () in swiftSorter.bubbleSort(&arr)},
-        objcSort: {objcSorter.bubbleSort($0)})
-	            
+```swift
+self.testSorts(swiftSort: {(var arr: [Int]) -> () in swiftSorter.bubbleSort(&arr)},
+    objcSort: {objcSorter.bubbleSort($0)})
+```
+
 ## Access Control
 
 Now that I am at a point at which my app once again compiles, I can take a look at access control. Surprisingly enough, when Swift first launched, it had no access control whatsoever. Fortunately, in [beta 4](https://developer.apple.com/swift/blog/?id=5), 3 access control keywords were added: `public`, `private`, and `internal`. 

@@ -5,11 +5,34 @@
 
 var fs = require("fs");
 var hl = require("highlight.js");
-var md = require("markdown").markdown;
+var marked = require("marked");
 var yaml = require("yamljs");
 var cheerio = require("cheerio");
 var logger = require("./logger.js");
 var entities = require('entities');
+
+// ---- [ setup ] -------------------------------------------------------------
+
+var renderer = new marked.Renderer();
+renderer.heading = function(text, level) {
+  var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+  return "<h" + level + "><a name=\"" + escapedText + "\" class=\"anchor\"" +
+    " href=\"#" + escapedText + "\"><span class=\"header-link\"></span></a>" +
+    text + "</h" + level + ">";
+};
+renderer.code = function(code, lang) {
+  var result;
+  if (lang) {
+    result = hl.highlight(lang, code).value;
+  } else {
+    result = hl.highlightAuto(code).value;
+  }
+  return "<pre><code class=\"hljs\">" + result + "</code></pre>";
+};
+
+marked.setOptions({
+  renderer: renderer
+});
 
 // ---- [ paths ] -------------------------------------------------------------
 
@@ -68,13 +91,8 @@ function getMarkdownPost(year, month, day, filename) {
   var rawPost = fs.readFileSync(postsPath + filename + ".md",
     "utf8");
   var post = yaml.parse(rawPost.split("---")[1]);
-  var content = md.toHTML(rawPost.split("---")[2]);
-  $ = cheerio.load(entities.decodeHTML(content));
-  $("pre code").each(function(i, e) {
-    $(this).html(hl.highlightAuto(
-      entities.decodeHTML($(this).html())).value);
-    $(this).addClass("hljs");
-  });
+  var content = marked(rawPost.split("---")[2]);
+  $ = cheerio.load(content);
   post.content = $.html().replace(/\&quot;/gm, "\"");
   saveCache(filename, clone(post));
   return post;
@@ -176,7 +194,7 @@ exports.getPostList = function(year, month, day, limit) {
       var rawPost = fs.readFileSync(postsPath +
         postFilenames[i], "utf8");
       var post = yaml.parse(rawPost.split("---")[1]);
-      post.excerpt = md.toHTML(post.excerpt);
+      post.excerpt = marked(post.excerpt);
       var postArr = postFilenames[i].split("-");
       post.date = getFormattedDate(postArr[0], postArr[1], postArr[2]);
       var urlTitle = postArr.slice(3).join("-");
