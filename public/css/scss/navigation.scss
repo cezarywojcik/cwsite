@@ -18,8 +18,6 @@
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 
-    @include transition(all, 0.1s);
-
     &:hover {
       background-color: $gray1;
       border-bottom: thick solid $darkRed;

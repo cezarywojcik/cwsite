@@ -10,10 +10,6 @@ p>code {
   padding: 2px;
 }
 
-pre>code {
-  @include box-shadow(0, 1px, 5px, rgba(0, 0, 0, 0.5));
-}
-
 .hljs {
   display: block;
   padding: 0.5em;

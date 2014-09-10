@@ -100,8 +100,6 @@
   margin-bottom: 20px;
   padding: 5px;
 
-  @include box-shadow(0, 1px, 5px, rgba(0, 0, 0, 0.5));
-
   a {
     color: $darkRed;
     text-decoration: none;
@@ -151,8 +149,6 @@
   -ms-interpolation-mode: bicubic;
   padding: 4px;
   width: auto;
-
-  @include box-shadow(0, 1px, 3px, rgba(0, 0, 0, 0.1));
 }
 
 .prev {
