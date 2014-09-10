@@ -143,7 +143,7 @@ exports.getPostList = function(year, month, day, limit) {
     var filePattern = "";
     if (year) {
       if (isNaN(year) || Number(year) < 2000) {
-        throw "not a valid year: " + year;
+        throw "invalid url path: " + year;
       }
       filePattern += year;
       if (month) {
