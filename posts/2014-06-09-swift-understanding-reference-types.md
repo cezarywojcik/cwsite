@@ -18,7 +18,7 @@ class Test {
 
 Now, for some history. Before ARC, Objective-C required manual reference counting. For those not lucky enough to have experienced this, here's an example:
 
-```swift
+```objc
 // create (and retain) a new view controller
 UIViewController *viewController = [[UIViewController alloc] init];
 // release the view controller
