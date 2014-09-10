@@ -4,35 +4,35 @@ html(lang="en")
     include partials/head
     block head
   body
+    div.header
+      div.title Cezary Wojcik
+      div.subtitle Student, Web Developer, iOS Developer
+      ul.navigation
+        li
+          a(href="/") Home
+        li
+          a(href="/blog") Blog
+        li
+          a(href="/about") About
+        li
+          a(href="/contact") Contact
+        li
+          a(href="/gallery") Gallery
     div.page
-      div.header
-        div.title Cezary Wojcik
-        div.subtitle Student, Web Developer, iOS Developer
-        ul.navigation
-          li
-            a(href="/") Home
-          li
-            a(href="/blog") Blog
-          li
-            a(href="/about") About
-          li
-            a(href="/contact") Contact
-          li
-            a(href="/gallery") Gallery
-        div.content
-          block content
-        div.footer
-          div.left-footer
-            a(href="http://feeds.feedburner.com/CezaryWojciksBlog", title="Subscribe to my blog!", rel="alternate", type="application/rss+xml", target="_blank")
-              div.rss.image
-            a(href="https://twitter.com/cezary_wojcik", title="Follow me on twitter!", target="_blank")
-              div.twitter.image
-            a(href="https://github.com/cezarywojcik", title="Check out my GitHub page!", target="_blank")
-              div.github.image
-            a(href="http://www.linkedin.com/profile/view?id=161049325", title="My LinkedIn Profile", target="_blank")
-              div.linkedin.image
-          div.right-footer
-            | &#169; 2014 Cezary Wojcik
-          div.clearfix
+      div.content
+        block content
+      div.footer
+        div.left-footer
+          a(href="http://feeds.feedburner.com/CezaryWojciksBlog", title="Subscribe to my blog!", rel="alternate", type="application/rss+xml", target="_blank")
+            div.rss.image
+          a(href="https://twitter.com/cezary_wojcik", title="Follow me on twitter!", target="_blank")
+            div.twitter.image
+          a(href="https://github.com/cezarywojcik", title="Check out my GitHub page!", target="_blank")
+            div.github.image
+          a(href="http://www.linkedin.com/profile/view?id=161049325", title="My LinkedIn Profile", target="_blank")
+            div.linkedin.image
+        div.right-footer
+          | &#169; 2014 Cezary Wojcik
+        div.clearfix
     script
       | (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-35612201-1', 'auto');ga('send', 'pageview');

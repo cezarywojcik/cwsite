@@ -1,5 +1,5 @@
 input[type=text] {
-  background-color: #ccc;
+  background-color: $gray2;
   border: thin solid #474747;
   width: 250px;
 
@@ -9,9 +9,10 @@ input[type=text] {
 }
 
 input[type=submit] {
-  background-color: #ccc;
+  background-color: $gray2;
   border: thin solid #474747;
-  font-family: Georgia;
+  font-family: $bodyFont;
+  font-size: 14px;
   padding: 5px 15px 5px 15px;
 
   &:hover {
@@ -23,7 +24,7 @@ input[type=submit] {
 }
 
 textarea {
-  background-color: #ccc;
+  background-color: $gray2;
   border: thin solid #474747;
   width: 99%;
 
