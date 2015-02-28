@@ -51,3 +51,22 @@ hr {
   background: $darkRed;
   color: #fff;
 }
+
+table {
+  border-collapse: collapse;
+
+  td, th {
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+
+  tr {
+    &:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    &:nth-child(even) {
+      background-color: #eee;
+    }
+  }
+}
