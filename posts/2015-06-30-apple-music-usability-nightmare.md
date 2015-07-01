@@ -78,7 +78,7 @@ I soon found another twist in the puzzle. Right clicking had done nothing in the
 
 ![A Menu!](http://i.imgur.com/atA24s4.png)
 
-Of course, expecting this menu to have some kind of "Add To" option would be a little much. I began to wonder, then, how I am supposed to add multiple songs to a playlist at the same time. In Spotify, I can just CTRL-select multiple songs and then drag them all into a playlist on the left. So I selected multiple songs and right right clicked again.
+Of course, expecting this menu to have some kind of "Add To" option would be a little much. I began to wonder, then, how I am supposed to add multiple songs to a playlist at the same time. In Spotify, I can just CTRL-select multiple songs and then drag them all into a playlist on the left. So I selected multiple songs and right clicked again.
 
 ![Multi-selection](http://i.imgur.com/0PHks9F.png)
 
