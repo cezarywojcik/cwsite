@@ -41,8 +41,7 @@ So, every song I had to delete required 4 taps, most of which had to wait on som
 On around the 8th song, one song didn't delete after I went through the 4-tap deletion process. It stayed there. Thinking nothing of it, I continued on through the land of tedious deletion, wondering why I had nothing better to do. Eventually, I was left with only Opeth and "King X." I swear I tried going through the 4-tap deletion process around 30 times, and the song wouldn't go away. It was around here that I started wishing that iTunes 12.2 with Apple Music support would be released. Surely, with a desktop interface, I could handle simple tasks like playlist and music management with far more ease. 
 
 My gut reaction was to remove the app and reinstall it because maybe this was caused by some kind of local caching issue, but alas, you can't remove "default" apps from iOS. I tried restarting instead, just to make sure I've covered my bases, but "King X" was still there, and still undeletable. 
-
-<iframe src="https://vid.me/e/Hth5?stats=1" width="640" height="360" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no"></iframe>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://vid.me/e/Hth5?stats=1' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling='no'></iframe></div>
 
 I can't tell you enough how much this bothered me. I couldn't do anything until I got rid of that (note: this story does not have a happy ending - that song is still on my iPad, and still undeletable). So I waited until iTunes 12.2 came out.
 
