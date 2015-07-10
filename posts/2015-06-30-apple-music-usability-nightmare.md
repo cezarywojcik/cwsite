@@ -1,10 +1,10 @@
 ---
 title: Apple Music is a Usability Nightmare 
-excerpt: I was really hoping that I could switch to Apple Music from Spotify. I really wanted this to work. Not because Spotify is bad, because change can be fun (and because searching any song with Siri on my watch sounds pretty cool). I'm running the iOS 9 beta on my phone, so I downloaded the iOS 8.4 update on my iPad to check out Apple Music. Unfortunately, I don't see myself switching from Spotify anytime soon. I really tried to convince myself to give it a chance, but Apple Music is just simply awful to use. Everything I would want to do would either take forever or is simply not possible.
+excerpt: I was really hoping that I could switch to Apple Music from Spotify. I really wanted this to work. Not because Spotify is bad, but because change can be fun (and because searching any song with Siri on my watch sounds pretty cool). I'm running the iOS 9 beta on my phone, so I downloaded the iOS 8.4 update on my iPad to check out Apple Music. Unfortunately, I don't see myself switching from Spotify anytime soon. I really tried to convince myself to give it a chance, but Apple Music is just simply awful to use. Everything I would want to do would either take forever or is simply not possible.
 layout: generic
 ---
 
-I was really hoping that I could switch to Apple Music from Spotify. I really wanted this to work. Not because Spotify is bad, because change can be fun (and because searching any song with Siri on my watch sounds pretty cool).
+I was really hoping that I could switch to Apple Music from Spotify. I really wanted this to work. Not because Spotify is bad, but because change can be fun (and because searching any song with Siri on my watch sounds pretty cool).
 
 I'm running the iOS 9 beta on my phone, so I downloaded the iOS 8.4 update on my iPad to check out Apple Music. Unfortunately, I don't see myself switching from Spotify anytime soon. I really tried to convince myself to give it a chance, but Apple Music is just simply awful to use. Everything I would want to do would either take forever or is simply not possible.
 
