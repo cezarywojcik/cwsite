@@ -91,3 +91,4 @@ I really wanted Apple Music to win me over, but it only made me realize how nice
 
 **UPDATE**: Yes, this post is a bit overdramatic and focuses only on making playlists. Yes, there are lots of things that Apple Music probably does well. I just wanted to make my own playlists, and I became very annoyed with how poorly Apple Music currently supports that. A more appropriate title, maybe, would be "Apple Music was a Usability Nightmare for me," because I ran into issues and roadblocks every step of the way. As Apple makes updates to the iOS app and iTunes, I will definitely check the updates out. Right now, however, it's not worth my time to go through tedious clicks over and over just to get to the same point that I'm already at with Spotify.
 
+

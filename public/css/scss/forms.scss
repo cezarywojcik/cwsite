@@ -12,7 +12,7 @@ input[type=submit] {
   background-color: $gray2;
   border: thin solid #474747;
   font-family: $bodyFont;
-  font-size: 14px;
+  font-size: $fontSize;
   padding: 5px 15px 5px 15px;
 
   &:hover {
