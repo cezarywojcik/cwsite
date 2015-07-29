@@ -31,6 +31,7 @@
 
   .rss {
     background-image: url("/img/rsssprite.png");
+    @include transition(all, 0.25s);
 
     &:hover {
       background-position: right;
@@ -39,6 +40,7 @@
 
   .twitter {
     background-image: url("/img/twittersprite.png");
+    @include transition(all, 0.25s);
 
     &:hover {
       background-position: right;
@@ -47,6 +49,7 @@
 
   .github {
     background-image: url("/img/githubsprite.png");
+    @include transition(all, 0.25s);
 
     &:hover {
     background-position: right;
@@ -55,6 +58,7 @@
 
   .linkedin {
     background-image: url("/img/linkedinsprite.png");
+    @include transition(all, 0.25s);
 
     &:hover {
       background-position: right;
