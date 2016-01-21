@@ -28,7 +28,7 @@ Again, I hit a wall, and school and other priorities took over.
 
 ## Design Beginnings
 
-Once I figured out what kind of gameplay I wanted, instead of running straight into the implementation, I started out by actually mocking up some designs (since I had given myself an entire 30 days). Like any engineer pretending to be a designer, I googled around a bit and decided to start with a color scheme. I went to [paletton.com](http://paletton.com/) and played with the sliders until I had some kind of color scheme.
+Once I figured out what kind of gameplay I wanted, instead of running straight into the implementation, I started out by actually mocking up some designs (since I had given myself an entire 30 days). Like any engineer pretending to be a designer, I googled around a bit and decided to start with a color scheme. I went to [paletton.com](http://paletton.com/) and played with the sliders until I had something that didn't look particularly offensive.
 
 ![My first color scheme](http://i.imgur.com/Fn5UWnV.png)
 
@@ -36,7 +36,7 @@ Once I had my color scheme, I decided to draw some kind of design.
 
 ![My first design](http://imgur.com/8SLkL46.png)
 
-As you can see, my initial name for the game was **Wordr** - even the words in this puzzle mock are "THE FUTURE IS WORDR". Now that I had this sample puzzle and design, I began work on what the gameplay would feel like. I wanted to make sure that interacting with the tiles felt *real* and *delightful*. After playing with many different kinds of animations, I grew to really like a slight 3D tilt to the animation. The tiles changes colors and tilt down on selection, shake left and right if the selection doesn't form a word, and fall to the bottom if they do.
+As you can see, my initial name for the game was **Wordr** - even the words contained in this puzzle mock are "THE FUTURE IS WORDR". Now that I had this sample puzzle and design, I began work on what the gameplay would feel like. I wanted to make sure that interacting with the tiles felt *real* and *delightful*. After playing with many different kinds of animations, I grew to really like a slight 3D tilt variation that I had been exploring. The tiles changes colors and tilt down on selection, shake left and right if the selection doesn't form a word, and fall to the bottom if they do form one.
 
 ![Initial gameplay](http://i.imgur.com/vuc9LEr.gif)
 
