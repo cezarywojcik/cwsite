@@ -88,4 +88,6 @@ Here are some lessons I learned about personal projects along the way.
 
 ## Conclusion
 
-Making [WordIQ](http://itunes.apple.com/app/id1059196571) was a lot of fun and helped me learn a lot about not only iOS development, but also time and project management. I hope you enjoy it!
+Making [WordIQ](http://itunes.apple.com/app/id1059196571) was a lot of fun and helped me learn a lot about not only iOS development, but also time and project management. Make sure to throw me a rating on the AppStore if you enjoy it - it really helps out! If you have any feedback, you can send it to [WordIQApp@gmail.com](mailto:wordiqapp@gmail.com)!
+
+![WordIQ](http://i.imgur.com/afxlDZ0.png)
