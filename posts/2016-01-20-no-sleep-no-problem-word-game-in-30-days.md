@@ -8,9 +8,9 @@ Almost every developer has looked at a piece of software at some point and thoug
 
 I was looking through the AppStore a bit ago just to see what was out there. I downloaded several of the "top" applications, and as I was messing around with them, I couldn't help but shake that familiar feeling. Having recently started a full time iOS position, my confidence that I could do better was, well, overwhelming. 
 
-I decided that I would prove myself right. I made a plan, found some help, and gave myself around 30 days for the project. Now, it's finally time to release what I've been working on - [WordIQ](http://itunes.apple.com/app/id1059196571)!
+I decided that I would prove myself right. I made a plan, found some help, and gave myself around 30 days for the project. Surely, if I can make [a fully functional app in a hackathon + change](http://cezarywojcik.com/2014/05/15/corbus-coming-soon), I can find the time to make a fleshed out game of some sort in 30 days, right?
 
-Though it took a week or two over my initial 30 day plan, I learned a lot over the process, and I'm pretty happy with the app that I ended up with. Surely, if I can make [a fully functional app in a hackathon + change](http://cezarywojcik.com/2014/05/15/corbus-coming-soon), I can find the time to make a fleshed out game of some sort in 30 days, right?
+Though it took a week or two over my initial 30 day plan, I learned a lot over the process, and I'm pretty happy with the app that I ended up with. Now, it's finally time to release what I've been working on - [WordIQ](http://itunes.apple.com/app/id1059196571)!
 
 ## Failed Projects
 
