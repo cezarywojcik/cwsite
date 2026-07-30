@@ -3,60 +3,80 @@
  * Desc: the /contact route
  */
 
-var jade = require("jade");
+var nodemailer = require("nodemailer");
+var settings = require("../settings.js");
+var validator = require("validator");
 
 exports.contact = {};
 
 exports.contact.get = function(req, res) {
   res.render("contact", {
     title: "Contact Me"
-  }); 
+  });
 };
 
 exports.contact.post = function(req, res) {
-  var mail = require("nodemailer").mail;
-  var to = require("../settings.js").authorEmail;
-  var validator = require("validator");
+  var to = settings.authorEmail;
 
   var name, email, message;
   var fail = false;
   var errors = [];
   var article = {};
 
-  if (!req.param("name") || req.param("name").length === 0) {
+  if (!req.body.name || req.body.name.length === 0) {
     errors.push("The name field cannot be empty!");
     fail = true;
   }
 
-  if (!req.param("email") || req.param("email").length === 0 ||
-    !validator.isEmail(req.param("email"))) {
+  if (!req.body.email || req.body.email.length === 0 ||
+    !validator.isEmail(req.body.email)) {
     errors.push("Please enter a valid email!");
     fail = true;
   }
 
-  if (!req.param("message") || req.param("message").length === 0) {
+  if (!req.body.message || req.body.message.length === 0) {
     errors.push("The message field cannot be empty!");
     fail = true;
   }
 
   if (!fail) {
     try {
-      name = req.param("name");
-      email = req.param("email");
-      message = "IP: " + req.connection.remoteAddress + "\n";
-      message += req.param("message");
+      name = req.body.name;
+      email = req.body.email;
+      message = "IP: " + req.ip + "\n";
+      message += req.body.message;
 
-      mail({
-        from: name + "<" + email + ">",
+      var transporter = nodemailer.createTransport(settings.mailTransport || {
+        sendmail: true,
+        newline: "unix",
+        path: "/usr/sbin/sendmail"
+      });
+
+      transporter.sendMail({
+        from: name + " <" + email + ">",
         to: to,
         subject: "CW.com - Message",
         text: message
-      });
+      }, function(err) {
+        if (err) {
+          console.log(err);
+          article = {
+            title: "Oh no!",
+            content: "There was a problem with sending your message."
+          };
+        } else {
+          article = {
+            title: "Message Sent!",
+            content: "I'll get back to you as soon as I can."
+          };
+        }
 
-      article = {
-        title: "Message Sent!",
-        content: "I'll get back to you as soon as I can."
-      };
+        res.render("generic", {
+          title: "Contact Me",
+          article: article
+        });
+      });
+      return;
     } catch (err) {
       console.log(err);
       article = {
@@ -72,9 +92,9 @@ exports.contact.post = function(req, res) {
   } else {
     res.render("contact", {
       errors: errors,
-      name: req.param("name"),
-      email: req.param("email"),
-      message: req.param("message")
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message
     });
   }
 };

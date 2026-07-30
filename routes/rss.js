@@ -4,21 +4,21 @@
  */
 
 var pm = require("../postmanager.js");
-var rss = require("rss");
+var RSS = require("rss");
 
 exports.rss = function(req, res) {
-  var feed = new rss({
+  var feed = new RSS({
     title: "Cezary Wojcik's Blog",
     author: "Cezary Wojcik",
     description: "The Official Blog of Cezary Wojcik",
     feed_url: "http://" + req.headers.host + "/rss",
     site_url: "http://" + req.headers.host + "/blog",
-    copyright: "Copyright Cezary Wojcik 2014",
+    copyright: "Copyright Cezary Wojcik " + new Date().getFullYear(),
     language: "en-US"
   });
 
   var posts = pm.getPostList(null, null, null, 30);
-  for (var i in posts) {
+  for (var i = 0; i < posts.length; i++) {
     var post = posts[i];
     feed.item({
       title: post.title,
@@ -28,6 +28,6 @@ exports.rss = function(req, res) {
       date: post.date
     });
   }
-  res.set("Content-Type", "text/xml");
-  res.send(feed.xml());
+  res.set("Content-Type", "application/rss+xml");
+  res.send(feed.xml({ indent: true }));
 };

@@ -5,26 +5,25 @@
 
 var fs = require("fs");
 var hl = require("highlight.js");
-var marked = require("marked");
-var yaml = require("yamljs");
+var { marked } = require("marked");
+var yaml = require("js-yaml");
 var logger = require("./logger.js");
-var entities = require('entities');
 
 // ---- [ marked setup ] ------------------------------------------------------
 
 var renderer = new marked.Renderer();
-renderer.heading = function(text, level) {
-  var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-  return "<a name=\"" + escapedText + "\"></a><h" + level + "><a class=\"header-link\"" +
+renderer.heading = function({ text, depth }) {
+  var escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
+  return "<a name=\"" + escapedText + "\"></a><h" + depth + "><a class=\"header-link\"" +
     " href=\"#" + escapedText + "\">" +
-    text + "</h" + level + "></a>";
+    text + "</h" + depth + "></a>";
 };
-renderer.code = function(code, lang) {
+renderer.code = function({ text, lang }) {
   var result;
-  if (lang) {
-    result = hl.highlight(lang, code).value;
+  if (lang && hl.getLanguage(lang)) {
+    result = hl.highlight(text, { language: lang }).value;
   } else {
-    result = hl.highlightAuto(code).value;
+    result = hl.highlightAuto(text).value;
   }
   return "<pre><code class=\"hljs\">" + result + "</code></pre>";
 };
@@ -40,13 +39,47 @@ var cachePath = __dirname + "/cache/";
 
 // ---- [ helper functions ] --------------------------------------------------
 
+// Jekyll-style front matter often contains unquoted colons/brackets that
+// strict YAML parsers reject. Parse simple "key: value" pairs instead.
+function parseFrontMatter(raw) {
+  var result = {};
+  var lines = String(raw).replace(/^\s+|\s+$/g, "").split("\n");
+  var currentKey = null;
+  var currentValue = [];
+
+  function commit() {
+    if (!currentKey) {
+      return;
+    }
+    var value = currentValue.join("\n").replace(/^\s+|\s+$/g, "");
+    if ((value.charAt(0) === "\"" && value.charAt(value.length - 1) === "\"") ||
+        (value.charAt(0) === "'" && value.charAt(value.length - 1) === "'")) {
+      value = value.slice(1, -1);
+    }
+    result[currentKey] = value;
+  }
+
+  for (var i = 0; i < lines.length; i++) {
+    var match = lines[i].match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
+    if (match) {
+      commit();
+      currentKey = match[1];
+      currentValue = [match[2]];
+    } else if (currentKey) {
+      currentValue.push(lines[i]);
+    }
+  }
+  commit();
+  return result;
+}
+
 function clone(obj) {
   if (obj === null || "object" != typeof obj) {
     return obj;
   }
   var copy = obj.constructor();
   for (var attr in obj) {
-    if (obj.hasOwnProperty(attr)) {
+    if (Object.prototype.hasOwnProperty.call(obj, attr)) {
       copy[attr] = obj[attr];
     }
   }
@@ -70,7 +103,7 @@ function getCachedPost(filename) {
 
   var rawPost = fs.readFileSync(cachePath + filename + ".html",
     "utf8");
-  var post = yaml.parse(rawPost.split("---")[1]);
+  var post = parseFrontMatter(rawPost.split("---")[1]);
   post.content = rawPost.split("---")[2];
   return post;
 }
@@ -78,10 +111,9 @@ function getCachedPost(filename) {
 function saveCache(filename, post) {
   ensureCacheExists();
 
-  var path = cachePath + filename + ".html";
   var content = post.content;
   delete post.content;
-  var cache = "---\n" + yaml.stringify(post) + "---\n";
+  var cache = "---\n" + yaml.dump(post) + "---\n";
   cache += content;
   fs.writeFileSync(cachePath + filename + ".html", cache);
 }
@@ -89,8 +121,8 @@ function saveCache(filename, post) {
 function getMarkdownPost(year, month, day, filename) {
   var rawPost = fs.readFileSync(postsPath + filename + ".md",
     "utf8");
-  var post = yaml.parse(rawPost.split("---")[1]);
-  var content = marked(rawPost.split("---")[2]);
+  var post = parseFrontMatter(rawPost.split("---")[1]);
+  var content = marked.parse(rawPost.split("---")[2]);
   post.content = content;
   saveCache(filename, clone(post));
   return post;
@@ -159,17 +191,17 @@ exports.getPostList = function(year, month, day, limit) {
     var filePattern = "";
     if (year) {
       if (isNaN(year) || Number(year) < 2000) {
-        throw "invalid url path: " + year;
+        throw new Error("invalid url path: " + year);
       }
       filePattern += year;
       if (month) {
         if (isNaN(month) || Number(month) <= 0 || Number(month) > 12) {
-          throw "not a valid month";
+          throw new Error("not a valid month");
         }
         filePattern += "-" + month;
         if (day) {
           if (isNaN(day) || Number(day) <= 0 || Number(day) > 31) {
-            throw "not a valid day";
+            throw new Error("not a valid day");
           }
           filePattern += "-" + day;
         }
@@ -188,11 +220,11 @@ exports.getPostList = function(year, month, day, limit) {
 
     // load post data
     var posts = [];
-    for (var i in postFilenames) {
+    for (var i = 0; i < postFilenames.length; i++) {
       var rawPost = fs.readFileSync(postsPath +
         postFilenames[i], "utf8");
-      var post = yaml.parse(rawPost.split("---")[1]);
-      post.excerpt = marked(post.excerpt);
+      var post = parseFrontMatter(rawPost.split("---")[1]);
+      post.excerpt = marked.parse(post.excerpt || "");
       var postArr = postFilenames[i].split("-");
       post.date = getFormattedDate(postArr[0], postArr[1], postArr[2]);
       var urlTitle = postArr.slice(3).join("-");

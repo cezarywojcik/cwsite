@@ -4,8 +4,7 @@
  */
 
 var fs = require("fs");
-var jade = require("jade");
-var yaml = require("yamljs");
+var yaml = require("js-yaml");
 
 exports.gallery = function(req, res) {
   var apps = [];
@@ -14,10 +13,10 @@ exports.gallery = function(req, res) {
   try {
     var path = __dirname + "/../gallery/apps/";
     var appFiles = fs.readdirSync(path);
-    for (var i in appFiles) {
+    for (var i = 0; i < appFiles.length; i++) {
       var appFileContents = String(fs.readFileSync(path +
         appFiles[i]));
-      apps.push(yaml.parse(appFileContents));
+      apps.push(yaml.load(appFileContents));
     }
   } catch (err) {
     console.log(err);
@@ -27,10 +26,10 @@ exports.gallery = function(req, res) {
   try {
     path = __dirname + "/../gallery/projects/";
     var projectFiles = fs.readdirSync(path);
-    for (var j in projectFiles) {
+    for (var j = 0; j < projectFiles.length; j++) {
       var projectFileContents = String(fs.readFileSync(path +
         projectFiles[j]));
-      projects.push(yaml.parse(projectFileContents));
+      projects.push(yaml.load(projectFileContents));
     }
   } catch (err) {
     console.log(err);

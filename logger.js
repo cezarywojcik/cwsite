@@ -10,8 +10,8 @@ exports.log = function(description, filename, functionName, error) {
   if (error) {
     console.error("AN ERROR HAS OCCURRED:");
     console.error("\t" + description);
-    console.error("\t" + functionName + " @" + filename) ;
-    console.error("\t" + JSON.stringify(error));
+    console.error("\t" + functionName + " @" + filename);
+    console.error("\t" + (error && error.stack ? error.stack : String(error)));
   } else {
     console.log(description);
   }
