@@ -19,15 +19,17 @@ app.set("views", __dirname + "/views");
 // The layout relies on inline scripts plus Google Analytics and Disqus, so a
 // Content-Security-Policy would need to be tailored before it can be enabled.
 // HSTS is left to whatever terminates TLS, images must stay embeddable in feed
-// readers, and Disqus needs the referrer to verify the site's domain.
+// readers, and Disqus needs the referrer to verify the site's domain and
+// window.opener for its login popups.
 app.use(helmet({
   contentSecurityPolicy: false,
   strictTransportSecurity: false,
+  crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" },
   crossOriginResourcePolicy: { policy: "cross-origin" },
   referrerPolicy: { policy: "strict-origin-when-cross-origin" }
 }));
 app.use(express.static(__dirname + "/public"));
-app.use(express.urlencoded({ extended: false, limit: "20kb" }));
+app.use(express.urlencoded({ extended: false }));
 
 // ---- [ routing ] -----------------------------------------------------------
 
@@ -44,6 +46,22 @@ app.get("/privacy", routes.privacy);
 app.get("/:year/:month/:day/:title", routes.blogpost);
 app.get("/:year{/:month}{/:day}", routes.bloglist);
 app.use(routes.error);
+
+// Without this, Express's default handler shows stack traces to visitors
+// unless NODE_ENV is "production".
+app.use(function(err, req, res, next) {
+  logger.log("request failed", "app.js", "errorHandler", err);
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(err.status || 500).render("generic", {
+    title: "Error",
+    article: {
+      title: "Oh no!",
+      content: "Something went wrong with that request."
+    }
+  });
+});
 
 // ---- [ run server ] --------------------------------------------------------
 

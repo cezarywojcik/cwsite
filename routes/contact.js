@@ -11,6 +11,7 @@ var transporter = nodemailer.createTransport(settings.mailTransport ||
   { sendmail: true });
 
 var MAX_LENGTHS = { name: 200, email: 254, message: 10000 };
+var CONTROL_CHARS = /[\x00-\x1f\x7f]/;
 
 // Repeated form fields arrive as arrays, so only accept plain strings.
 function field(req, name) {
@@ -37,10 +38,12 @@ exports.contact.post = async function(req, res) {
     errors.push("The name field cannot be empty!");
   } else if (name.length > MAX_LENGTHS.name) {
     errors.push("Your name is too long!");
+  } else if (CONTROL_CHARS.test(name)) {
+    errors.push("Your name contains invalid characters!");
   }
 
   if (email.length === 0 || email.length > MAX_LENGTHS.email ||
-    !validator.isEmail(email)) {
+    CONTROL_CHARS.test(email) || !validator.isEmail(email)) {
     errors.push("Please enter a valid email!");
   }
 
