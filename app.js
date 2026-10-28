@@ -35,6 +35,7 @@ app.route("/contact")
   .post(routes.contact.post);
 app.get("/gallery", routes.gallery);
 app.get("/rss", routes.rss);
+app.get("/privacy", routes.privacy);
 app.get("/:year/:month/:day/:title", routes.blogpost);
 app.get("/:year/:month?/:day?", routes.bloglist);
 app.get('/*', routes.error);
