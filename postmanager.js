@@ -5,32 +5,33 @@
 
 var fs = require("fs");
 var hl = require("highlight.js");
-var marked = require("marked");
-var yaml = require("yamljs");
+var marked = require("marked").marked;
+var yaml = require("yaml");
 var logger = require("./logger.js");
-var entities = require('entities');
 
 // ---- [ marked setup ] ------------------------------------------------------
 
-var renderer = new marked.Renderer();
-renderer.heading = function(text, level) {
-  var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-  return "<a name=\"" + escapedText + "\"></a><h" + level + "><a class=\"header-link\"" +
-    " href=\"#" + escapedText + "\">" +
-    text + "</h" + level + "></a>";
-};
-renderer.code = function(code, lang) {
-  var result;
-  if (lang) {
-    result = hl.highlight(lang, code).value;
-  } else {
-    result = hl.highlightAuto(code).value;
+marked.use({
+  renderer: {
+    heading: function(token) {
+      var text = this.parser.parseInline(token.tokens);
+      var level = token.depth;
+      var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      return "<a name=\"" + escapedText + "\"></a><h" + level + ">" +
+        "<a class=\"header-link\" href=\"#" + escapedText + "\">" +
+        text + "</a></h" + level + ">";
+    },
+    code: function(token) {
+      var lang = (token.lang || "").split(/\s/)[0];
+      var result;
+      if (lang && hl.getLanguage(lang)) {
+        result = hl.highlight(token.text, { language: lang }).value;
+      } else {
+        result = hl.highlightAuto(token.text).value;
+      }
+      return "<pre><code class=\"hljs\">" + result + "</code></pre>";
+    }
   }
-  return "<pre><code class=\"hljs\">" + result + "</code></pre>";
-};
-
-marked.setOptions({
-  renderer: renderer
 });
 
 // ---- [ paths ] -------------------------------------------------------------
@@ -107,13 +108,21 @@ exports.errorPost = {
 
 exports.getPost = function(year, month, day, title) {
   try {
+    if (!/^\d{4}$/.test(year) || !/^\d{2}$/.test(month) ||
+      !/^\d{2}$/.test(day) || !/^[\w-]+$/.test(title)) {
+      throw "invalid post path: " + [year, month, day, title].join("/");
+    }
     var filename = [year, month, day, title].join("-");
     var cachedFilename = cachePath + filename + ".html";
     var mdFilename = postsPath + filename + ".md";
     var post;
     if (fs.existsSync(cachedFilename) &&
       fs.statSync(cachedFilename).mtime > fs.statSync(mdFilename).mtime) {
-      post = getCachedPost(filename);
+      try {
+        post = getCachedPost(filename);
+      } catch (cacheErr) {
+        post = getMarkdownPost(year, month, day, filename);
+      }
     } else {
       post = getMarkdownPost(year, month, day, filename);
     }

@@ -3,15 +3,17 @@
  * Desc: the /:year/:month/:day/:title route
  */
 
-var jade = require("jade");
 var pm = require("../postmanager.js");
 
 exports.blogpost = function(req, res) {
-  var year = req.param("year");
-  var month = req.param("month");
-  var day = req.param("day");
-  var title = req.param("title");
+  var year = req.params.year;
+  var month = req.params.month;
+  var day = req.params.day;
+  var title = req.params.title;
   var post = pm.getPost(year, month, day, title);
+  if (post === pm.errorPost) {
+    res.status(404);
+  }
   res.render(post.layout, {
     title: post.title,
     article: post

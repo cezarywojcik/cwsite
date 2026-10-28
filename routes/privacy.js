@@ -3,13 +3,13 @@
  * Desc: the /privacy route
  */
 
-var jade = require("jade");
+var pug = require("pug");
 
 exports.privacy = function(req, res) {
   var article = {
     title: "Privacy Policy",
     timecreated: "",
-    content: jade.renderFile(__dirname + "/../views/partials/privacy.jade"),
+    content: pug.renderFile(__dirname + "/../views/partials/privacy.pug"),
     nav: ""
   };
 
