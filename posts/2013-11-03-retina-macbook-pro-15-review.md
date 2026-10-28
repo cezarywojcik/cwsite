@@ -1,6 +1,6 @@
 ---
 title: Retina MacBook Pro 15 Review
-excerpt: ![Retina MacBook Pro 15"](http://i.imgur.com/CQZjpCo.jpg) Even though I had seen the gaping difference between non-retina and retina iPhones and iPads, I had always been skeptical of a retina display on a laptop (or any computer for that matter). "This screen is perfectly sharp and crisp," I once thought. I had even taken a look at the retina screens at the Apple store once or twice. "It's not that big of a difference," I thought. I was wrong.
+excerpt: "![Retina MacBook Pro 15\"](http://i.imgur.com/CQZjpCo.jpg) Even though I had seen the gaping difference between non-retina and retina iPhones and iPads, I had always been skeptical of a retina display on a laptop (or any computer for that matter). \"This screen is perfectly sharp and crisp,\" I once thought. I had even taken a look at the retina screens at the Apple store once or twice. \"It's not that big of a difference,\" I thought. I was wrong."
 layout: generic
 ---
 

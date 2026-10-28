@@ -1,6 +1,6 @@
 ---
 title: CorBus is released!
-excerpt: ![CorBus](http://i.imgur.com/t3esSPS.png) It took a little while, but CorBus is finally released. You can download it [here](https://appsto.re/us/UB8t0.i)!
+excerpt: "![CorBus](http://i.imgur.com/t3esSPS.png) It took a little while, but CorBus is finally released. You can download it [here](https://appsto.re/us/UB8t0.i)!"
 layout: generic
 ---
 

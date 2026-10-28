@@ -10,7 +10,7 @@ I arrived at [the Apple Store in Bridgeport Village](http://www.apple.com/retail
 
 ![3 a.m.](http://i.imgur.com/xI4XRfh.png)
 
-<center>*This map shows the line and where the end was at 3 a.m.*</center>
+<center><em>This map shows the line and where the end was at 3 a.m.</em></center>
 
 At around 6:05 a.m., Apple Store employees started coming around to say that they will start handing out cards in 15 minutes. People started getting up (some people started waking up).
 

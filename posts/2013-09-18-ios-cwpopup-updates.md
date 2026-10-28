@@ -1,6 +1,6 @@
 ---
 title: iOS - CWPopup Updates
-excerpt: ![CWPopup](https://raw.github.com/cezarywojcik/CWPopup/master/popup.gif) For the release of iOS 7, I added 3 main features to my CWPopup iOS library.
+excerpt: "![CWPopup](https://raw.github.com/cezarywojcik/CWPopup/master/popup.gif) For the release of iOS 7, I added 3 main features to my CWPopup iOS library."
 layout: generic
 ---
 

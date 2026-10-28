@@ -1,5 +1,5 @@
 ---
-title: Theory: Macbook Touch
+title: "Theory: Macbook Touch"
 excerpt: I'm sure that I'm not the first person to have thought about a MacBook with a touch screen, but I think that it is an appropriate time to resurface the subject. [A report by the Wall Street Journal](http://online.wsj.com/article/SB10001424127887323829104578620870597408176.html) claims that Apple will be testing devices with screen sizes of 4 inches and 13 inches.
 layout: generic
 ---

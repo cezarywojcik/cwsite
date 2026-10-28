@@ -1,6 +1,6 @@
 ---
 title: SC2News 2.0 - Waiting for Review
-excerpt: ![SC2News 2.0](http://i.imgur.com/zESuDVV.png) My [SC2News app](https://itunes.apple.com/us/app/sc2news-app/id497279494?mt=8) has been in need of an update. I've finally submitted the 2.0 version to the App Store.
+excerpt: "![SC2News 2.0](http://i.imgur.com/zESuDVV.png) My [SC2News app](https://itunes.apple.com/us/app/sc2news-app/id497279494?mt=8) has been in need of an update. I've finally submitted the 2.0 version to the App Store."
 layout: generic
 ---
 

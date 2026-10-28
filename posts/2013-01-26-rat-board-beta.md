@@ -1,6 +1,6 @@
 ---
 title: Rat Board - Beta
-excerpt: ![RatBoard](/img/blog/ratboard.png) I just released the beta version of a project I've been working on, the Rat Board. You can [click here](/ratboard/) to check it out. The Rat Board is a web-based chat client with a terminal-esque look to it. I've wanted something like this, so I made it. That's usually how my personal projects happen.
+excerpt: "![RatBoard](/img/blog/ratboard.png) I just released the beta version of a project I've been working on, the Rat Board. You can [click here](/ratboard/) to check it out. The Rat Board is a web-based chat client with a terminal-esque look to it. I've wanted something like this, so I made it. That's usually how my personal projects happen."
 layout: generic
 ---
 
