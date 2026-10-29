@@ -16,6 +16,9 @@ var settings = require("./settings.js");
 var app = express();
 app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
+if (settings.trustProxy !== undefined) {
+  app.set("trust proxy", settings.trustProxy);
+}
 // Blog posts load Disqus through an inline script, so a
 // Content-Security-Policy would need to be tailored before it can be enabled.
 // HSTS is left to whatever terminates TLS, images must stay embeddable in feed
@@ -39,7 +42,7 @@ app.get("/blog/:id", routes.legacyblogpost);
 app.get("/about", routes.about);
 app.route("/contact")
   .get(routes.contact.get)
-  .post(routes.contact.post);
+  .post(routes.contact.limit, routes.contact.post);
 app.get("/gallery", routes.gallery);
 app.get("/rss", routes.rss);
 app.get("/privacy", routes.privacy);

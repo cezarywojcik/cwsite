@@ -18,7 +18,7 @@ Next, copy the example settings file:
 cp settings.example.js settings.js
 ```
 
-Then, using [your favorite editor](http://www.vim.org), edit the file and update the `authorEmail`, `port`, and `siteUrl` values. The contact form sends mail through the local `sendmail` binary unless you set `mailTransport`.
+Then, using [your favorite editor](http://www.vim.org), edit the file and update the `authorEmail`, `port`, and `siteUrl` values. The contact form sends mail through the local `sendmail` binary unless you set `mailTransport`. If the site runs behind a reverse proxy such as nginx, also set `trustProxy` so the contact form's per-visitor rate limit sees real visitor IPs.
 
 Next, create a `posts` folder:
 

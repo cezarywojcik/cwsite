@@ -4,6 +4,7 @@
  */
 
 var nodemailer = require("nodemailer");
+var rateLimit = require("express-rate-limit").rateLimit;
 var validator = require("validator");
 var settings = require("../settings.js");
 
@@ -20,6 +21,25 @@ function field(req, name) {
 }
 
 exports.contact = {};
+
+// Rejected submissions return 4xx and don't count, so typos can't lock
+// anyone out; only messages that were actually sent use up the allowance.
+exports.contact.limit = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  limit: 5,
+  skipFailedRequests: true,
+  standardHeaders: "draft-8",
+  legacyHeaders: false,
+  handler: function(req, res) {
+    res.status(429).render("contact", {
+      title: "Contact Me",
+      errors: ["You've sent a few messages recently. Please try again later."],
+      name: field(req, "name"),
+      email: field(req, "email"),
+      message: field(req, "message")
+    });
+  }
+});
 
 exports.contact.get = function(req, res) {
   res.render("contact", {
