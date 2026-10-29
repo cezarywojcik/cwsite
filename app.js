@@ -16,7 +16,7 @@ var settings = require("./settings.js");
 var app = express();
 app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
-// The layout relies on inline scripts plus Google Analytics and Disqus, so a
+// Blog posts load Disqus through an inline script, so a
 // Content-Security-Policy would need to be tailored before it can be enabled.
 // HSTS is left to whatever terminates TLS, images must stay embeddable in feed
 // readers, and Disqus needs the referrer to verify the site's domain and
