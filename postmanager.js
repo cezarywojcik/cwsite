@@ -60,6 +60,12 @@ function getFormattedDate(y, m, d) {
   return month + " " + Number(d) + ", " + Number(y);
 }
 
+function listPostFilenames() {
+  return fs.readdirSync(postsPath).filter(function(file) {
+    return /\.md$/.test(file);
+  });
+}
+
 function ensureCacheExists() {
   if (!fs.existsSync(cachePath)) {
     fs.mkdirSync(cachePath);
@@ -139,7 +145,7 @@ exports.getPost = function(year, month, day, title) {
 exports.getPostURLById = function(id) {
   try {
     // get all posts
-    var postFilenames = fs.readdirSync(postsPath);
+    var postFilenames = listPostFilenames();
     postFilenames.sort();
 
     // get specific post name
@@ -186,14 +192,11 @@ exports.getPostList = function(year, month, day, limit) {
     }
 
     // get all posts that fit the filter
-    var postFilenames = fs.readdirSync(postsPath)
+    var postFilenames = listPostFilenames()
       .filter(function(post) {
       return post.indexOf(filePattern) === 0;
     });
     postFilenames.sort().reverse();
-    postFilenames = postFilenames.filter(function(o) {
-      return o !== ".DS_Store";
-    });
 
     // load post data
     var posts = [];
