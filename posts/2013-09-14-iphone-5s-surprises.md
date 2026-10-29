@@ -1,6 +1,6 @@
 ---
 title: iPhone 5s Surprises
-excerpt: ![iPhone 5s](http://photos.appleinsider.com/touchid-scan-fingerprint2-20130910.jpg) Most everything that was presented on the September 10th Apple Keynote was leaked on the internet beforehand. There were, however, two key surprises.
+excerpt: "![iPhone 5s](http://photos.appleinsider.com/touchid-scan-fingerprint2-20130910.jpg) Most everything that was presented on the September 10th Apple Keynote was leaked on the internet beforehand. There were, however, two key surprises."
 layout: generic
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: My New Website
-excerpt: ![New Website](/img/blog/newsite.png) I just remade my website from scratch. The site is now faster and more visually appealing. You can see a comparison of the two sites above. On the left is the old version of the site, and on the right is the new version.
+excerpt: "![New Website](/img/blog/newsite.png) I just remade my website from scratch. The site is now faster and more visually appealing. You can see a comparison of the two sites above. On the left is the old version of the site, and on the right is the new version."
 layout: generic
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: CWStatusBarNotification v2.0
-excerpt: ![CWStatusBarNotification](https://github.com/cezarywojcik/CWStatusBarNotification/raw/master/screenshots/demo.gif) I just updated my [CWStatusBarNotification](https://github.com/cezarywojcik/CWStatusBarNotification) library to version 2.0. The changes are fairly substantial as I refactored the entire library.
+excerpt: "![CWStatusBarNotification](https://github.com/cezarywojcik/CWStatusBarNotification/raw/master/screenshots/demo.gif) I just updated my [CWStatusBarNotification](https://github.com/cezarywojcik/CWStatusBarNotification) library to version 2.0. The changes are fairly substantial as I refactored the entire library."
 layout: generic
 ---
 

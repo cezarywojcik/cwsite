@@ -1,6 +1,6 @@
 ---
 title: Google Maps Hackathon - Parcel App
-excerpt: ![Parcel Screenshot](http://i.imgur.com/vfmURS7.png?1) Yesterday, I got to participate in the Google Maps Hackathon held at Oregon State University, and I had a great deal of fun. My team won the prize for Best Overall App by implementing my idea called **Parcel**.
+excerpt: "![Parcel Screenshot](http://i.imgur.com/vfmURS7.png?1) Yesterday, I got to participate in the Google Maps Hackathon held at Oregon State University, and I had a great deal of fun. My team won the prize for Best Overall App by implementing my idea called **Parcel**."
 layout: generic
 ---
 

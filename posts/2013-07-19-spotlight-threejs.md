@@ -1,5 +1,5 @@
 ---
-title: Spotlight: Three.js
+title: "Spotlight: Three.js"
 excerpt: Recently, I've begun messing with an amazing framework called [Three.js](http://threejs.org/). Three.js is a JavaScript framework that can produce WebGL and Canvas-based 3D elements. It is completely [open-sourced](https://github.com/mrdoob/three.js/) with plenty of examples. I want to show a really simple example of Three.js that renders a simple cube.
 layout: generic
 ---

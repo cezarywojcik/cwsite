@@ -1,6 +1,6 @@
 ---
 title: The Hyperloop
-excerpt: ![Hyperloop](http://www.teslamotors.com/sites/default/files/imagecache/blog_hero/hyperloop.jpg) Elon Musk, the real world Tony Stark, has revealed his plans for a transportation device called the [Hyperloop](http://www.teslamotors.com/blog/hyperloop). The sketches and idea have a clear scent of the future.
+excerpt: "![Hyperloop](http://www.teslamotors.com/sites/default/files/imagecache/blog_hero/hyperloop.jpg) Elon Musk, the real world Tony Stark, has revealed his plans for a transportation device called the [Hyperloop](http://www.teslamotors.com/blog/hyperloop). The sketches and idea have a clear scent of the future."
 layout: generic
 ---
 

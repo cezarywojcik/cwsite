@@ -1,6 +1,6 @@
 ---
 title: iCodeCracker 2.0
-excerpt: ![iCodeCracker](/img/blog/icodecracker.png) I just submitted an update of my app, iCodeCracker, to the App Store. It has been a long time since I touched that app, but I decided it was about time to update the App to more modern standards.
+excerpt: "![iCodeCracker](/img/blog/icodecracker.png) I just submitted an update of my app, iCodeCracker, to the App Store. It has been a long time since I touched that app, but I decided it was about time to update the App to more modern standards."
 layout: generic
 ---
 

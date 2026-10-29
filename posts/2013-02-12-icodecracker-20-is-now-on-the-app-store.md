@@ -1,6 +1,6 @@
 ---
 title: iCodeCracker 2.0 is now on the App Store!
-excerpt: ![iCodeCracker](/img/blog/icodecracker.png) After a bit of a wait, iCodeCracker 2.0 has finally been approved to the App Store! This new version includes GameCenter support, a new look, and an In App Purchase that can be used to remove the ads. You can download the app [here](https://itunes.apple.com/us/app/icodecracker-2.0/id491093925?ls=1&mt=8)!
+excerpt: "![iCodeCracker](/img/blog/icodecracker.png) After a bit of a wait, iCodeCracker 2.0 has finally been approved to the App Store! This new version includes GameCenter support, a new look, and an In App Purchase that can be used to remove the ads. You can download the app [here](https://itunes.apple.com/us/app/icodecracker-2.0/id491093925?ls=1&mt=8)!"
 layout: generic
 ---
 

@@ -5,14 +5,17 @@
 
 var pm = require("../postmanager.js");
 var rss = require("rss");
+var settings = require("../settings.js");
 
 exports.rss = function(req, res) {
+  // Links built from the Host header can be spoofed, so prefer the configured URL.
+  var siteUrl = settings.siteUrl || "http://" + req.headers.host;
   var feed = new rss({
     title: "Cezary Wojcik's Blog",
     author: "Cezary Wojcik",
     description: "The Official Blog of Cezary Wojcik",
-    feed_url: "http://" + req.headers.host + "/rss",
-    site_url: "http://" + req.headers.host + "/blog",
+    feed_url: siteUrl + "/rss",
+    site_url: siteUrl + "/blog",
     copyright: "Copyright Cezary Wojcik 2014",
     language: "en-US"
   });
@@ -23,7 +26,7 @@ exports.rss = function(req, res) {
     feed.item({
       title: post.title,
       description: post.excerpt,
-      url: "http://" + req.headers.host + post.url,
+      url: siteUrl + post.url,
       author: "Cezary Wojcik",
       date: post.date
     });

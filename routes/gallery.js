@@ -4,8 +4,7 @@
  */
 
 var fs = require("fs");
-var jade = require("jade");
-var yaml = require("yamljs");
+var yaml = require("yaml");
 
 exports.gallery = function(req, res) {
   var apps = [];

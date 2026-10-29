@@ -3,13 +3,13 @@
  * Desc: the /about route
  */
 
-var jade = require("jade");
+var pug = require("pug");
 
 exports.about = function(req, res) {
   var article = {
     title: "About Me",
     timecreated: "",
-    content: jade.renderFile(__dirname + "/../views/partials/about.jade"),
+    content: pug.renderFile(__dirname + "/../views/partials/about.pug"),
     nav: ""
   };
 

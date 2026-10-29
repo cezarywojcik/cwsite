@@ -1,6 +1,6 @@
 ---
 title: Swift - Understanding Reference Types
-excerpt:  There are three different kinds of references in Swift that are based on the ARC (Automatic Reference Counting) model that we have come to know in Objective-C: `strong`, `weak`, and `unowned`. The difference between these as well as the proper implementation can be somewhat confusing, so I'm writing up a description of each for my own and others' benefit.
+excerpt: "There are three different kinds of references in Swift that are based on the ARC (Automatic Reference Counting) model that we have come to know in Objective-C: `strong`, `weak`, and `unowned`. The difference between these as well as the proper implementation can be somewhat confusing, so I'm writing up a description of each for my own and others' benefit."
 layout: generic
 ---
 
